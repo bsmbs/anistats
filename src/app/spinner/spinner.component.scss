@@ -1,0 +1,35 @@
+.spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.spinner:after {
+    content: " ";
+    display: block;
+    margin: 5px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-color: transparent #fff #fff transparent;
+    animation: spinner-ani 0.8s linear infinite;
+}
+
+.spinner.small:after {
+  width: 10px;
+  height: 10px;
+}
+
+.spinner.big:after {
+  width: 48px;
+  height: 48px;
+}
+
+@keyframes spinner-ani {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+  

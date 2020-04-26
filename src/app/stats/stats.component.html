@@ -1,0 +1,65 @@
+<div *ngIf="loading">
+    <div class="loading-bg"></div>
+    <div class="loading-spinner">
+        <app-spinner size="big"></app-spinner>
+    </div>
+</div>
+<div class="grid" *ngIf="!loading">
+    <div class="grid-column">
+    <div class="week-chart chart-container">
+        <div class="chart-header">
+            <span class="chart-title">Episodes a day</span>
+            <span style="flex: 1"></span>
+            <div class="range-btn" (click)="loadEarlier()" *ngIf="statsService.nextPage">
+                <i class="material-icons">first_page</i>
+                <span class="range-btn-text">Load more</span>
+            </div>
+            <i class="material-icons chart-arrow" (click)="move(-400)">keyboard_arrow_left</i>
+            <i class="material-icons chart-arrow" (click)="move(400)">keyboard_arrow_right</i>
+        </div>
+        <app-chart [data]="activities" [moving]="movingValue"></app-chart>
+    </div>
+    <div class="overview-chart chart-container">
+        <div class="chart-header">
+            <span class="chart-title">{{ todayDate.formattedWeekday }}, {{ todayDate.formatted }}</span>
+            <span style="flex: 1"></span>
+            <i class="material-icons chart-arrow" [class.inactive]="todayIndex+1 == activities.length" (click)="todayMove(1)">keyboard_arrow_left</i>
+            <i class="material-icons chart-arrow" [class.inactive]="todayIndex == 0" (click)="todayMove(-1)">keyboard_arrow_right</i>
+        </div>
+        <app-chart [data]="today" [moving]="movingToday"></app-chart>
+    </div>
+    <footer class="mobile">anistats is not affiliated with AniList. Source on <a href="https://github.com/pizza61/anistats">GitHub</a></footer>
+    </div>
+    <div class="series-chart chart-container">
+        <div class="chart-header">
+            <span class="chart-title">Details</span>
+        </div>
+        <div class="list" *ngFor="let day of statsService.activities">
+            <div class="list-header">
+                <div class="list-header-title">
+                    <span class="list-header-title-weekday">{{day.day.weekday}},</span> 
+                    <span class="list-header-title-date">{{ day.day.date }}.{{ day.day.month | month }}.{{ day.day.year }}</span>
+                </div>
+                <span style="flex: 1"></span>
+                <div class="list-header-prop">
+                    <span class="prop-value">{{ day.eps }}</span>
+                    <span class="prop-key">Episodes</span>
+                </div>
+                <div class="list-header-prop">
+                    <span class="prop-value">{{ day.anime.length }}</span>
+                    <span class="prop-key">Anime</span>
+                </div>
+            </div>
+            <div class="list-item" *ngFor="let anime of day.anime" (click)="more(anime.id)">
+                <img class="item-image" [src]="anime.image">
+                <div class="item-title">{{ anime.title }}</div>
+                <span style="flex: 1"></span>
+                <div class="list-header-prop">
+                    <span class="prop-value">{{ anime.eps }}</span>
+                    <span class="prop-key">Episodes</span>
+                </div>
+            </div>
+        </div>
+        <div class="list-load" *ngIf="statsService.nextPage" (click)="loadEarlier()">Load more</div>
+    </div>
+</div>

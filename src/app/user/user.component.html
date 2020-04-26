@@ -1,0 +1,27 @@
+<nav class="standardNav" *ngIf="!mobile">
+    <a class="username-link" [routerLink]="['/']">
+        <div class="title">
+            <span class="blue">ani</span>stats
+        </div>
+    </a>
+    <a class="username-link" [href]="'https://anilist.co/user/'+user.userdata.id">
+        <div class="username">
+            <img class="avatar" [src]="user.userdata.avurl">
+            <span class="username-t">{{ user.userdata.username }}</span>'s stats
+        </div>
+    </a>
+    <span style="margin-right: 12px;"></span>
+    <div class="tab" [class.selected]="name == 'overview'" [routerLink]="['overview']">Overview</div>
+    <div class="tab" [class.selected]="name == 'series'" [routerLink]="['series']">Series statistics</div>
+</nav>
+<router-outlet *ngIf="user.userdata"></router-outlet>
+<nav class="mobileNav" *ngIf="mobile">
+    <div class="tab" [class.selectedM]="name == 'overview'" [routerLink]="['overview']">
+        <i class="material-icons tab-icon">account_circle</i>
+        <span class="tab-text">Overview</span>
+    </div>
+    <div class="tab" [class.selectedM]="name == 'series'" [routerLink]="['series']">
+        <i class="material-icons tab-icon">library_books</i>
+        <span class="tab-text">Series statistics</span>
+    </div>
+</nav>

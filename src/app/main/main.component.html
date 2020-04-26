@@ -1,0 +1,17 @@
+<div class="mainContainer">
+    <div class="mainTitle">
+        <span class="blue">ani</span>stats
+    </div>
+    <div class="mainInput">
+        <input class="input" placeholder="Anilist username" type="text" [(ngModel)]="username" (keyup.enter)="send()">
+        <div class="inputButton" (click)="send()" [style]="username.length > 0 ? {opacity: 1, visibility: 'visible'} : {visibility: 'hidden'}">
+            <i *ngIf="!loading" class="material-icons">keyboard_arrow_right</i>
+            <app-spinner *ngIf="loading" size="small"></app-spinner>
+        </div>
+    </div>
+    <div @showError class="error" *ngIf="errorVisible">
+        User not found
+    </div>
+
+    <footer>anistats is not affiliated with AniList. Source on <a href="https://github.com/pizza61/anistats">GitHub</a></footer>
+</div>

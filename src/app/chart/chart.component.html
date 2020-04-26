@@ -1,0 +1,18 @@
+<div class="chart" #chartel>
+    <div class="chart-bars" (mousemove)="move($event)" (mousedown)="down($event)" (mouseup)="up($event)" (mouseleave)="up($event)">
+        <div class="chart-bar" *ngFor="let day of data.reverse()">
+            <div class="value">{{ day.eps }}</div>
+            <div class="bar" [style.height]="(day.eps/maxEps)*100+'%'"></div>
+        </div>
+    </div>
+    <div class="x-axis">
+        <div class="chart-label" *ngFor="let day of data">
+            <span class="chart-label-top" *ngIf="!day.bottomImage">{{ day.topText }}</span>
+            <span class="chart-label-bottom" *ngIf="!day.bottomImage">{{ day.bottomText }}</span>
+            <div class="chart-image-container" *ngIf="day.bottomImage">
+                <img class="chart-label-image" [src]="day.bottomText">
+                <span class="chart-image-tooltip">{{ day.topText }}</span>
+            </div>
+        </div>
+    </div>
+</div>
