@@ -83,17 +83,20 @@
   margin: 10px;
   background: #1f232d;
   border-radius: 6px;
-  box-shadow: 2px 5px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chart-header {
   display: flex;
   align-items: center;
   padding: 10px 16px;
-  margin-bottom: 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   background: #2d313d;
+
+  &:not(.series-header) {
+    border-bottom: 2px solid #1f7dac;
+  }
 }
 
 .chart-title {
@@ -122,11 +125,9 @@
   background: #2d313d;
   display: flex;
   align-items: center;
-  padding: 10px;
-  box-shadow: 1px 4px 3px rgba(0, 0, 0, 0.2);
+  padding: 8px 12.944px;
+  border-left: 2px solid #1f7dac;
 }
-
-.list-header-title {}
 
 .list-header-title-weekday {
   font-size: .9em;
@@ -145,13 +146,13 @@
 }
 
 .prop-value {
-  margin-right: 5px;
+  margin-right: 6.47px;
   font-size: 1.4em;
 }
 
 .prop-key {
   text-transform: uppercase;
-  color: #c8c8c8;
+  color: #818c95;
   font-size: 0.76em;
 }
 
@@ -166,6 +167,10 @@
   &:hover {
     background: #1f7dac;
   }
+
+  &:active {
+    opacity: 0.7;
+  }
 }
 
 .item-image {
@@ -176,10 +181,15 @@
   margin: 0 10px;
 }
 
-.item-title {}
+.item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
 
 .list-load {
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   font-weight: 600;
   cursor: pointer;
@@ -189,6 +199,10 @@
 
   &:hover {
     background: #1f7dac;
+  }
+
+  &:active {
+    opacity: 0.7;
   }
 }
 
