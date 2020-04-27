@@ -27,7 +27,7 @@ export class StatsComponent implements OnInit {
           await this.statsService.prefetch();
 
           this.loading = false;
-        })
+        });
     } else {
       this.loading = false;
     }
@@ -38,7 +38,7 @@ export class StatsComponent implements OnInit {
       ...x,
       topText: x.day.date + '.' + this.monthPipe.transform(x.day.month) + '.' + x.day.year,
       bottomText: x.day.weekday
-    }))
+    }));
   }
 
   move(val: number) {
@@ -51,16 +51,16 @@ export class StatsComponent implements OnInit {
       topText: x.title,
       bottomImage: true,
       bottomText: x.image
-    })).sort((a, b) => a.eps - b.eps)
+    })).sort((a, b) => a.eps - b.eps);
   }
 
   get todayDate() {
-    let ob = this.activities[this.todayIndex];
+    const ob = this.activities[this.todayIndex];
     return {
       day: ob.day,
       formatted: ob.topText,
       formattedWeekday: ob.bottomText
-    }
+    };
   }
 
   todayMove(pos) {
@@ -73,7 +73,7 @@ export class StatsComponent implements OnInit {
   }
 
   more(id: number) {
-    this.router.navigate(['series', id], { relativeTo: this.route.parent})
+    this.router.navigate(['series', id], { relativeTo: this.route.parent});
   }
 
   ngOnInit(): void {

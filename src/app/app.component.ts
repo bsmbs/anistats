@@ -8,9 +8,9 @@ import { Component, Query } from '@angular/core';
 })
 export class AppComponent {
   title = 'anistats';
-  
+
   constructor() {
   }
 
-  
+
 }

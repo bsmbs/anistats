@@ -9,7 +9,6 @@
     },
     "array-type": false,
     "arrow-return-shorthand": true,
-    "curly": true,
     "deprecation": {
       "severity": "warning"
     },
@@ -40,10 +39,6 @@
       ]
     },
     "max-classes-per-file": false,
-    "max-line-length": [
-      true,
-      140
-    ],
     "member-ordering": [
       true,
       {
@@ -64,10 +59,6 @@
       "trace"
     ],
     "no-empty": false,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
@@ -82,7 +73,9 @@
     ],
     "semicolon": {
       "options": [
-        "always"
+        "always",
+        "ignore-interfaces",
+        "ignore-bound-class-methods"
       ]
     },
     "space-before-function-paren": {

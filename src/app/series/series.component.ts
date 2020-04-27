@@ -33,19 +33,19 @@ export class SeriesComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
 
   ngOnInit(): void {
-    if(typeof this.seriesService.list == 'undefined') this.seriesService.getList();
+    if (typeof this.seriesService.list == 'undefined') this.seriesService.getList();
     this.route.params.subscribe(params => {
-      window.scrollTo(0, 0)
-      if(params.seriesId.length > 0) 
-        this.loading = true
-        this.select(params.seriesId);
-    })
+      window.scrollTo(0, 0);
+      if (params.seriesId.length > 0)
+        this.loading = true;
+      this.select(params.seriesId);
+    });
 
     this.breakpointObserver
     .observe(['(min-width: 1024px)'])
     .subscribe((state: BreakpointState) => {
       this.mobile = !state.matches;
-    })
+    });
   }
 
   get list(): Media[] {
@@ -62,19 +62,19 @@ export class SeriesComponent implements OnInit {
     .then(r => {
       this.current = this.statsSerivce.parseActivities(r.Page.activities);
       this.loading = false;
-      if(this.current.length == 0) {
+      if (this.current.length == 0) {
         this.currentData = {
           id: r.Media.id,
           image: r.Media.coverImage.large,
           title: r.Media.title.romaji,
           banner: r.Media.bannerImage,
           episodes: r.Media.episodes,
-        }
+        };
         return;
       }
-      let first = this.current[this.current.length-1];
-      let last = this.current[0];
-      let diff = Math.ceil(Math.abs(last.day.time - first.day.time) / (1000 * 60 * 60 * 24))+1;
+      const first = this.current[this.current.length - 1];
+      const last = this.current[0];
+      const diff = Math.ceil(Math.abs(last.day.time - first.day.time) / (1000 * 60 * 60 * 24)) + 1;
 
       this.currentData = {
         id: r.Media.id,
@@ -85,8 +85,8 @@ export class SeriesComponent implements OnInit {
         first: first.day.date + '.' + this.monthPipe.transform(first.day.month) + '.' + first.day.year,
         last: last.day.date + '.' + this.monthPipe.transform(last.day.month) + '.' + last.day.year,
         diff
-      }
-    })
+      };
+    });
   }
 
   switch() {
@@ -98,7 +98,7 @@ export class SeriesComponent implements OnInit {
       ...x,
       topText: x.day.date + '.' + this.monthPipe.transform(x.day.month) + '.' + x.day.year,
       bottomText: x.day.weekday
-    }))
+    }));
   }
 
 }

@@ -11,7 +11,7 @@ export interface ActivityDate {
     weekday: string,
     time: number
   }
-  
+
 export interface ActivityMedia {
     id: number,
     title: string,
@@ -49,23 +49,23 @@ export const fetchQuery = `
           }
         }
       }
-    }`
+    }`;
 
-export const daysStrings = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+export const daysStrings = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export function activityDateFromDate(timestamp: Date): ActivityDate {
-  let date = timestamp.getDate(),
-      month = timestamp.getMonth()+1,
+  const date = timestamp.getDate(),
+      month = timestamp.getMonth() + 1,
       year = timestamp.getFullYear(),
       weekday = daysStrings[timestamp.getDay()],
       eps = 0;
-  
-      return {
+
+  return {
         date, // 01
         month, // April
         year, // 2020
         weekday, // Wednesday
         time: timestamp.getTime()
-      }
+      };
 }
 
 export function dateFromActivityDate(activityDate: ActivityDate): Date {

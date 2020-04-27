@@ -23,15 +23,15 @@ export class SeriesService {
   getList() {
     this.fetchList()
     .then(r => {
-      let formatted = [].concat.apply([], r.map(x => (x.isCustomList ? [] : x.entries)));
+      const formatted = [].concat.apply([], r.map(x => (x.isCustomList ? [] : x.entries)));
 
       this.list = formatted.map(x => x.media);
       this.list.sort((a, b) => a.title.romaji.localeCompare(b.title.romaji));
-    })
+    });
   }
 
   async fetchMedia(media: number) {
-    let q = `query($id: Int, $mediaId: Int, $page: Int, $perPage: Int) {
+    const q = `query($id: Int, $mediaId: Int, $page: Int, $perPage: Int) {
       Media (id: $mediaId) {
         id
         title {
@@ -72,30 +72,30 @@ export class SeriesService {
         }
       }
     }
-    `
+    `;
 
-    let vars = {
+    const vars = {
       id: this.user.userdata.id,
       mediaId: media,
       page: 1,
       perPage: 50
-    }
+    };
 
-    let resp = await axios.post('https://graphql.anilist.co',
-      { query: q, variables: vars }, 
-      { headers: 
-        { 
-          'Content-Type': 'application/json', 
-          'Accept': 'application/json', 
-        } 
+    const resp = await axios.post('https://graphql.anilist.co',
+      { query: q, variables: vars },
+      { headers:
+        {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        }
       }
-    )
+    );
 
     return resp.data.data;
   }
 
   async fetchList() {
-    let q = `query ($id: Int, $chunk: Int) {
+    const q = `query ($id: Int, $chunk: Int) {
       MediaListCollection (userId: $id, type: ANIME, chunk: $chunk, status_not_in: [PLANNING]) {
         lists {
           name
@@ -114,21 +114,21 @@ export class SeriesService {
           }
         }
       }
-    }`
+    }`;
 
-    let vars = {
+    const vars = {
       id: this.user.userdata.id
-    }
+    };
 
-    let resp = await axios.post('https://graphql.anilist.co',
-      { query: q, variables: vars }, 
-      { headers: 
-        { 
-          'Content-Type': 'application/json', 
-          'Accept': 'application/json', 
-        } 
+    const resp = await axios.post('https://graphql.anilist.co',
+      { query: q, variables: vars },
+      { headers:
+        {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        }
       }
-    )
+    );
 
     return resp.data.data.MediaListCollection.lists;
   }

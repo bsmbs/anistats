@@ -24,23 +24,23 @@ export class UserComponent implements OnInit, OnDestroy {
         this.user.fetchUserById(params.id)
           .then(d => {
             this.statsService.userId = d.id;
-          })
+          });
       } else {
         this.statsService.userId = this.user.userdata.id;
       }
-    })
+    });
 
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.name = this.route.snapshot.firstChild.url[0].path;
       }
-    })
+    });
 
     this.breakpointObserver
     .observe(['(min-width: 760px)'])
     .subscribe((state: BreakpointState) => {
       this.mobile = !state.matches;
-    })
+    });
   }
 
   ngOnInit(): void {

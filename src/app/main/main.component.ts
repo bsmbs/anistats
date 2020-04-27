@@ -33,7 +33,7 @@ export class MainComponent implements OnInit {
 
   send() {
     // string check
-    if(this.username.length == 0 || this.username.length > 128) return;
+    if (this.username.length == 0 || this.username.length > 128) return;
     this.loading = true;
     // api request
     this.user.fetchUserByName(this.username)
@@ -44,7 +44,7 @@ export class MainComponent implements OnInit {
     .catch(() => {
       this.loading = false;
       this.errorVisible = true;
-      setTimeout(() => { this.errorVisible = false }, 2000)
-    })
+      setTimeout(() => { this.errorVisible = false; }, 2000);
+    });
   }
 }

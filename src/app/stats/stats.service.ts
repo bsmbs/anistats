@@ -16,22 +16,22 @@ export class StatsService {
   apiPage: number = 1;
   apiLastPage: number;
 
-  daysStrings = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  daysStrings = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   constructor() { }
 
   parseActivities(activities): ActivityDay[] {
-    let days: ActivityDay[] = [];
+    const days: ActivityDay[] = [];
 
     activities.forEach(activity => {
-      let timestamp = new Date(activity.createdAt * 1000);
+      const timestamp = new Date(activity.createdAt * 1000);
       let date = timestamp.getDate(),
-          month = timestamp.getMonth()+1,
+          month = timestamp.getMonth() + 1,
           year = timestamp.getFullYear(),
           weekday = this.daysStrings[timestamp.getDay()],
           eps = 0;
 
-      let activityDate: ActivityDate = {
+      const activityDate: ActivityDate = {
         date, // 01
         month, // April
         year, // 2020
@@ -39,101 +39,101 @@ export class StatsService {
         time: timestamp.getTime()
       };
 
-      switch(activity.status) {
-        case "watched episode":
-        case "rewatched episode":
-          const episodesRange = activity.progress.split(" - ");
-          
+      switch (activity.status) {
+        case 'watched episode':
+        case 'rewatched episode':
+          const episodesRange = activity.progress.split(' - ');
+
           if (episodesRange.length == 2) eps = parseInt(episodesRange[1]) - parseInt(episodesRange[0]) + 1;
           else eps = 1;
 
           break;
-        case "completed":
+        case 'completed':
           eps = 1;
           break;
         default:
           return;
       }
 
-      let media: ActivityMedia = {
+      const media: ActivityMedia = {
         id: activity.media.id,
         title: activity.media.title.romaji,
         image: activity.media.coverImage.medium,
         eps
-      }
+      };
 
-      let thisDay = days.find(x => this.compareDates(x.day, activityDate));
-      
+      const thisDay = days.find(x => this.compareDates(x.day, activityDate));
+
       if (thisDay) {
-        thisDay.eps += eps
+        thisDay.eps += eps;
 
-        let record = thisDay.anime.find(x => x.id == media.id);
-        if(record) record.eps += eps;
+        const record = thisDay.anime.find(x => x.id == media.id);
+        if (record) record.eps += eps;
         else thisDay.anime.push(media);
       } else days.push({
         day: activityDate,
         eps,
         anime: (media ? [media] : [])
-      })
-    })
+      });
+    });
 
-    return days
+    return days;
   }
 
   async fetchActivity(page: number) {
-    let vars = {
+    const vars = {
       page,
       perPage: 50,
       userId: this.userId
-    }
+    };
     const apiResp = await axios.post(
-      'https://graphql.anilist.co', 
+      'https://graphql.anilist.co',
       {
         query: fetchQuery,
         variables: vars
-      }, 
+      },
       {
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          Accept: 'application/json',
         }
       }
-    )
+    );
 
     return apiResp;
   }
 
   loadEarlier() {
       this.activities = this.activities.concat(this.prefetchedActivities);
-    
-      if(this.apiLastPage == this.apiPage) return;
-  
+
+      if (this.apiLastPage == this.apiPage) return;
+
       this.apiPage++;
-  
+
       this.prefetch();
-      
+
   }
 
   prefetch() {
     return new Promise((resolve) => {
-      this.fetchActivity(this.apiPage+1).then(response2 => {
+      this.fetchActivity(this.apiPage + 1).then(response2 => {
         this.apiLastPage = response2.data.data.Page.pageInfo.lastPage;
         this.prefetchedActivities = this.parseActivities(response2.data.data.Page.activities);
-  
-        let duplicates = this.prefetchedActivities.filter(x => this.compareDates(x.day, this.activities[this.activities.length-1].day));
-  
+
+        const duplicates = this.prefetchedActivities.filter(x => this.compareDates(x.day, this.activities[this.activities.length - 1].day));
+
         duplicates.forEach(n => {
-          const match = (x) => this.compareDates(x.day, this.activities[this.activities.length-1].day)
-          this.prefetchedActivities.splice(this.prefetchedActivities.findIndex(match), 1)
-          
-          let old = this.activities.find(match);
+          const match = (x) => this.compareDates(x.day, this.activities[this.activities.length - 1].day);
+          this.prefetchedActivities.splice(this.prefetchedActivities.findIndex(match), 1);
+
+          const old = this.activities.find(match);
           old.anime = old.anime.concat(n.anime);
           old.eps += n.eps;
-        })
+        });
 
         resolve();
-      })
-    })
+      });
+    });
   }
 
   compareDates(date1: ActivityDate, date2: ActivityDate) {
@@ -141,6 +141,6 @@ export class StatsService {
   }
 
   get nextPage(): boolean {
-    return (this.apiLastPage != this.apiPage)
+    return (this.apiLastPage != this.apiPage);
   }
 }

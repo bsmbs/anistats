@@ -27,8 +27,8 @@ export class ChartComponent implements OnChanges, OnInit {
       this.chartel.nativeElement.scrollBy({
         left: v,
         behavior: 'smooth'
-      })
-    })
+      });
+    });
   }
 
   ngOnChanges(): void {
@@ -36,7 +36,7 @@ export class ChartComponent implements OnChanges, OnInit {
   }
 
   move(e): void {
-    if(!this.isDown) return;
+    if (!this.isDown) return;
     e.preventDefault();
     const x = e.pageX - this.chartel.nativeElement.offsetLeft;
     const walk = (x - this.startX);
