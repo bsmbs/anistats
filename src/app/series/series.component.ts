@@ -36,9 +36,10 @@ export class SeriesComponent implements OnInit {
     if (typeof this.seriesService.list == 'undefined') this.seriesService.getList();
     this.route.params.subscribe(params => {
       window.scrollTo(0, 0);
-      if (params.seriesId.length > 0)
+      if (params.seriesId.length > 0) {
         this.loading = true;
-      this.select(params.seriesId);
+        this.select(params.seriesId);
+      }
     });
 
     this.breakpointObserver
