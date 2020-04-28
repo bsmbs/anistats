@@ -46,6 +46,13 @@
                     <div class="stat-key">Days</div>
                 </div>
             </div>
+            <div class="stat">
+                <i class="material-icons stat-icon">schedule</i>
+                <div class="stat-content">
+                    <div class="stat-value">{{ currentData.avg }}</div>
+                    <div class="stat-key">Daily average</div>
+                </div>
+            </div>
         </div>
         <div class="chart-container">
             <app-chart [data]="chartData" [moving]="null"></app-chart>

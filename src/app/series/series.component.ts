@@ -27,7 +27,8 @@ export class SeriesComponent implements OnInit {
     episodes: number,
     first?: string,
     last?: string,
-    diff?: number
+    diff?: number,
+    avg?: number
   };
 
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
@@ -76,6 +77,7 @@ export class SeriesComponent implements OnInit {
       const first = this.current[this.current.length - 1];
       const last = this.current[0];
       const diff = Math.ceil(Math.abs(last.day.time - first.day.time) / (1000 * 60 * 60 * 24)) + 1;
+      const avg = +(this.current.map(x => x.eps).reduce((a, b) => a + b) / this.current.length).toFixed(1);
 
       this.currentData = {
         id: r.Media.id,
@@ -85,7 +87,8 @@ export class SeriesComponent implements OnInit {
         episodes: r.Media.episodes,
         first: first.day.date + '.' + this.monthPipe.transform(first.day.month) + '.' + first.day.year,
         last: last.day.date + '.' + this.monthPipe.transform(last.day.month) + '.' + last.day.year,
-        diff
+        diff,
+        avg
       };
     });
   }
