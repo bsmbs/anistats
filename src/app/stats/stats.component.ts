@@ -4,6 +4,7 @@ import { StatsService } from './stats.service';
 import { UserService } from '../user/user.service';
 import { MonthPipe } from '../month.pipe';
 import { Subject } from 'rxjs';
+import { activityDateFromDate } from '../activity-day';
 
 @Component({
   selector: 'app-stats',
@@ -41,10 +42,6 @@ export class StatsComponent implements OnInit {
     }));
   }
 
-  move(val: number) {
-    this.movingValue.next(val);
-  }
-
   get today() {
     return this.activities[this.todayIndex].anime.map(x => ({
       ...x,
@@ -61,6 +58,40 @@ export class StatsComponent implements OnInit {
       formatted: ob.topText,
       formattedWeekday: ob.bottomText
     };
+  }
+
+  get todayEpisodes() {
+    const now = new Date();
+    const acdNow = activityDateFromDate(now);
+
+    const match = this.activities.find(x => this.statsService.compareDates(acdNow, x.day));
+    return (match ? match.eps : 0);
+  }
+
+  get weekEpisodes() {
+    const now = new Date();
+    now.setDate(now.getDate() - 6);
+
+    return this.activities
+    .filter(x => x.day.time > now.getTime())
+    .map(x => x.eps)
+    .reduce((a, b) => a + b);
+  }
+
+  get average() {
+    const sum = this.activities
+    .map(x => x.eps)
+    .reduce((a, b) => a + b);
+
+    const now = new Date();
+    const last = this.activities[this.activities.length-1].day.time;
+
+    const diff = Math.ceil(Math.abs(last - now.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    return (sum / diff).toFixed(2);
+  }
+
+  move(val: number) {
+    this.movingValue.next(val);
   }
 
   todayMove(pos) {
