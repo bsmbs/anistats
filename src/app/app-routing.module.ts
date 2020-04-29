@@ -19,12 +19,12 @@ const routes: Routes = [
       { path: 'series', redirectTo: 'series/', pathMatch: 'full' },
       { path: 'series/:seriesId', component: SeriesComponent },
 
-    ]
+    ],
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

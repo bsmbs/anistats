@@ -100,6 +100,7 @@ export class StatsComponent implements OnInit {
   }
 
   loadEarlier() {
+    if(this.statsService.lock) return;
     this.statsService.loadEarlier();
   }
 

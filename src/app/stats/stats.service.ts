@@ -10,8 +10,8 @@ export class StatsService {
   prefetchedActivities: ActivityDay[];
 
   userId: number;
-  avurl: string;
-  username: string;
+
+  lock: boolean = false;
 
   apiPage: number = 1;
   apiLastPage: number;
@@ -107,7 +107,7 @@ export class StatsService {
       this.activities = this.activities.concat(this.prefetchedActivities);
 
       if (this.apiLastPage == this.apiPage) return;
-
+      this.lock = true;
       this.apiPage++;
 
       this.prefetch();
@@ -131,6 +131,7 @@ export class StatsService {
           old.eps += n.eps;
         });
 
+        this.lock = false;
         resolve();
       });
     });

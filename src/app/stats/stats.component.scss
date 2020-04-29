@@ -36,6 +36,7 @@
 // range button
 .range-btn {
   display: flex;
+  align-items: center;
 
   background: #1f7dac;
   padding: 5px;
@@ -48,6 +49,11 @@
   &:hover {
     background: #248ec4;
   }
+}
+
+.range-spinner {
+  display: flex;
+  align-items: center;
 }
 
 // GRID
