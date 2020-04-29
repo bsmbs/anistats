@@ -91,6 +91,7 @@
   background: #1f232d;
   border-radius: 6px;
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #4c5162;
 }
 
 .chart-header {
@@ -100,10 +101,6 @@
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   background: #2d313d;
-
-  &:not(.series-header) {
-    border-bottom: 2px solid #1f7dac;
-  }
 }
 
 .chart-title {
@@ -128,12 +125,15 @@
   background: #2d313d;
 }
 
+.list {
+  border: 1px solid #4c5162;
+}
+
 .list-header {
   background: #2d313d;
   display: flex;
   align-items: center;
   padding: 8px 12.944px;
-  border-left: 2px solid #1f7dac;
 }
 
 .list-header-title-weekday {
@@ -167,12 +167,12 @@
   padding: 10px 5px;
   display: flex;
   align-items: center;
-  background: #1f232d;
+  background: #252933;
   transition: 200ms;
   cursor: pointer;
 
   &:hover {
-    background: #1f7dac;
+    background: #343944;
   }
 
   &:active {
