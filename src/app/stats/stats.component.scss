@@ -94,10 +94,10 @@
 }
 
 .chart-container {
-  background: #1f232d;
+  //background: //#1f232d;
   border-radius: 6px;
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #4c5162;
+  border: 1px solid #273851; //#4c5162;
 }
 
 .chart-header {
@@ -106,7 +106,7 @@
   padding: 10px 16px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background: #2d313d;
+  background: #151f2e; //#2d313d;
 }
 
 .chart-title {
@@ -128,15 +128,15 @@
 
 // List
 .series-chart {
-  background: #2d313d;
+  background: #151f2e; //#2d313d;
 }
 
 .list {
-  border: 1px solid #4c5162;
+  border: 1px solid #273851; //#4c5162;
 }
 
 .list-header {
-  background: #2d313d;
+  background: #151f2e; //#2d313d;
   display: flex;
   align-items: center;
   padding: 8px 12.944px;
@@ -173,12 +173,12 @@
   padding: 10px 5px;
   display: flex;
   align-items: center;
-  background: #252933;
+  background: #0e1824; //#252933;
   transition: 200ms;
   cursor: pointer;
 
   &:hover {
-    background: #343944;
+    background: #192a3f;
   }
 
   &:active {
@@ -222,7 +222,7 @@
 // SUMMARY
 .summary {
   padding: 10px;
-  background: #2d313d;
+  background: #151f2e; //#2d313d;
   display: flex;
 }
 

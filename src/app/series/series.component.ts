@@ -29,7 +29,7 @@ export class SeriesComponent implements OnInit {
     last?: string,
     diff?: number,
     avg?: number
-  };
+  }
 
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
 

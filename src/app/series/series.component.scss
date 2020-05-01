@@ -29,7 +29,7 @@
 
 .sidebar {
     margin: 10px;
-    background: #1f232d;
+    background: #151f2e; //#1f232d;
     border-radius: 5px;
     flex-basis: 400px;
     min-height: 0;
@@ -56,7 +56,7 @@
 
     outline: none;
     border: none;
-    background: #1f232d;
+    background: #151f2e;
     font: inherit;
     font-weight: 600;
     color: #cedfeb;
@@ -67,11 +67,11 @@
     padding: 10px;
     display: flex;
     align-items: center;
-    transition: 200ms;
+    transition: background 200ms;
     cursor: pointer;
 
     &:hover {
-        background: #408acf;
+        background: #124259;
     }
 }
 
@@ -198,7 +198,11 @@
 .chart-container {
     padding-top: 5px;
     margin: 10px;
-    background: #1f232d;
     border-radius: 6px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.selected {
+    background: #124259;
+    border-left: 3px solid #1f7dac;
 }
