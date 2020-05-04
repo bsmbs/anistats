@@ -9,10 +9,9 @@
         <div class="chart-label" *ngFor="let day of data">
             <span class="chart-label-top" *ngIf="!day.bottomImage">{{ day.topText }}</span>
             <span class="chart-label-bottom" *ngIf="!day.bottomImage">{{ day.bottomText }}</span>
-            <div class="chart-image-container" *ngIf="day.bottomImage">
+            <a class="chart-image-container" [attr.data-tooltip]="day.topText" *ngIf="day.bottomImage" [routerLink]="['../series/'+day.id]">
                 <img class="chart-label-image" [src]="day.bottomText">
-                <span class="chart-image-tooltip">{{ day.topText }}</span>
-            </div>
+            </a>
         </div>
     </div>
 </div>

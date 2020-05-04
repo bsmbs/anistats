@@ -186,6 +186,12 @@
   }
 }
 
+.list-item, a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
 .item-image {
   width: 36px;
   height: 36px;

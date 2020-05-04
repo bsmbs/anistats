@@ -68,7 +68,7 @@
           <span class="prop-key">Anime</span>
         </div>
       </div>
-      <div class="list-item" *ngFor="let anime of day.anime" (click)="more(anime.id)">
+      <a class="list-item" *ngFor="let anime of day.anime" [routerLink]="['../series/'+anime.id]">
         <img class="item-image" [src]="anime.image">
         <div class="item-title">{{ anime.title }}</div>
         <span style="flex: 1"></span>
@@ -76,7 +76,7 @@
           <span class="prop-value">{{ anime.eps }}</span>
           <span class="prop-key">Episodes</span>
         </div>
-      </div>
+      </a>
     </div>
     <div class="list-load" *ngIf="statsService.nextPage" (click)="loadEarlier()">Load more</div>
   </div>
