@@ -12,10 +12,6 @@
         height: 100vh;
     }
 
-    .search-ct {
-        margin-left: 16px;
-    }
-
     .expander {
         display: none;
     }
@@ -44,6 +40,7 @@
 
 .search-ct {
     display: flex;
+    background: #151f2e;
     top: 0;
     position: sticky;
 }
@@ -53,6 +50,7 @@
     
     width: 100%;
     padding: 12px 0;
+    margin-left: 16px;
 
     outline: none;
     border: none;

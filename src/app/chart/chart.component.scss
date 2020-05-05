@@ -17,25 +17,24 @@
   display: flex;
   padding: 0 10px;
   height: 180px;
+  align-items: flex-end;
 }
 
 .chart-bar {
   width: 100px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
   align-items: center;
+  min-height: 20%;
 }
 
 
 .bar {
+  height: 100%;
   width: 32px;
   background-color: #1f7dac;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-
-
 }
 
 .x-axis {
@@ -87,7 +86,6 @@
 
 [data-tooltip] {
   position: relative;
-  z-index: 2;
   cursor: pointer;
 }
 

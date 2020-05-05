@@ -1,8 +1,8 @@
 <div class="chart" #chartel>
     <div class="chart-bars" (mousemove)="move($event)" (mousedown)="down($event)" (mouseup)="up($event)" (mouseleave)="up($event)">
-        <div class="chart-bar" *ngFor="let day of data.reverse()">
+        <div class="chart-bar" *ngFor="let day of data.reverse()" [style.height]="(day.eps/maxEps)*100+'%'">
             <div class="value">{{ day.eps }}</div>
-            <div class="bar" [style.height]="(day.eps/maxEps)*100+'%'"></div>
+            <div class="bar" ></div>
         </div>
     </div>
     <div class="x-axis">
