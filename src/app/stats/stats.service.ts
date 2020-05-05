@@ -25,6 +25,11 @@ export class StatsService {
 
     activities.forEach(activity => {
       const timestamp = new Date(activity.createdAt * 1000);
+
+      if(timestamp.getHours() < 3) { // Count late night as previous day
+        timestamp.setDate(timestamp.getDate() - 1);
+      }
+
       let date = timestamp.getDate(),
           month = timestamp.getMonth() + 1,
           year = timestamp.getFullYear(),
