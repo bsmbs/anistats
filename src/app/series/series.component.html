@@ -39,6 +39,13 @@
                     <div class="stat-key">Finished</div>
                 </div>
             </div>
+            <div class="stat" *ngIf="currentData.planning">
+                <i class="material-icons stat-icon">add_comment</i>
+                <div class="stat-content">
+                    <div class="stat-value">{{ currentData.planning }}</div>
+                    <div class="stat-key">Planned since</div>
+                </div>
+            </div>
             <div class="stat">
                 <i class="material-icons stat-icon">today</i>
                 <div class="stat-content">

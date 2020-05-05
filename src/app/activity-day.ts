@@ -16,7 +16,8 @@ export interface ActivityMedia {
     id: number,
     title: string,
     image: string,
-    eps: number
+    eps: number,
+    planning?: ActivityDate
 }
 
 export const fetchQuery = `
@@ -70,4 +71,13 @@ export function activityDateFromDate(timestamp: Date): ActivityDate {
 
 export function dateFromActivityDate(activityDate: ActivityDate): Date {
   return new Date(activityDate.time);
+}
+
+export function stringFromActivityDate(activityDate: ActivityDate): string {
+  return activityDate.date + '.' + (activityDate.month >= 10 ? activityDate.month : '0'+activityDate.month ) + '.' + activityDate.year
+}
+
+export function stringFromDate(date: Date): string {
+  let activityDate = activityDateFromDate(date);
+  return activityDate.date + '.' + (activityDate.month >= 10 ? activityDate.month : '0'+activityDate.month ) + '.' + activityDate.year
 }

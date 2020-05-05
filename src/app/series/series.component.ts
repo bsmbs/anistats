@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SeriesService, Media } from './series.service';
 import { StatsService } from '../stats/stats.service';
-import { ActivityDay } from '../activity-day';
+import { ActivityDay, activityDateFromDate, stringFromActivityDate, stringFromDate } from '../activity-day';
 import { MonthPipe } from '../month.pipe';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -27,8 +27,9 @@ export class SeriesComponent implements OnInit {
     episodes: number,
     first?: string,
     last?: string,
+    planning?: string,
     diff?: number,
-    avg?: number
+    avg?: number,
   }
 
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
@@ -62,6 +63,8 @@ export class SeriesComponent implements OnInit {
     this.hidden = true;
     this.seriesService.fetchMedia(id)
     .then(r => {
+      let plan = r.Page.activities.find(act => act.status == 'plans to watch');
+
       this.current = this.statsSerivce.parseActivities(r.Page.activities);
       this.loading = false;
       if (this.current.length == 0) {
@@ -87,6 +90,7 @@ export class SeriesComponent implements OnInit {
         episodes: r.Media.episodes,
         first: first.day.date + '.' + this.monthPipe.transform(first.day.month) + '.' + first.day.year,
         last: last.day.date + '.' + this.monthPipe.transform(last.day.month) + '.' + last.day.year,
+        planning: (plan ? stringFromDate(new Date(plan.createdAt * 1000)) : ''),
         diff,
         avg
       };
