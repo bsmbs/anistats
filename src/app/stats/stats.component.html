@@ -6,6 +6,8 @@
 </div>
 <div class="grid" *ngIf="!loading">
   <div class="grid-column">
+
+    <!-- EPISODES CHART -->
     <div class="week-chart chart-container">
       <div class="chart-header">
         <span class="chart-title">Episodes</span>
@@ -20,6 +22,8 @@
       </div>
       <app-chart [data]="activities" [moving]="movingValue"></app-chart>
     </div>
+
+    <!-- SUMMARY -->
     <div class="summary chart-container">
       <div class="summary-item">
           <div class="summary-value">{{ todayEpisodes }}</div>
@@ -34,6 +38,8 @@
           <div class="summary-key">Average</div>
       </div>
     </div>
+
+    <!-- DAILY CHART -->
     <div class="overview-chart chart-container">
       <div class="chart-header">
         <span class="chart-title">{{ todayDate.formattedWeekday }}, {{ todayDate.formatted }}</span>
@@ -49,6 +55,8 @@
         href="https://github.com/pizza61/anistats">GitHub</a></footer>
   </div>
   <div class="series-chart chart-container">
+    
+    <!-- LIST -->
     <div class="chart-header series-header">
       <span class="chart-title">Details</span>
     </div>
