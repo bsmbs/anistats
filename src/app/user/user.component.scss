@@ -1,19 +1,21 @@
 .standardNav {
     display: flex;
     align-items: center;
-    background: #152232;//#1f232d;
+    background: #152232;
     position: sticky;
     top: 0;
     z-index: 3;
+    opacity: 0.9;
     box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .mobileNav {
     position: fixed;
     width: 100%;
-    background: #152232;
+    background: #141c27;
     bottom: 0;
     display: flex;
+    opacity: 0.9;
     box-shadow: -2px -1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -70,13 +72,13 @@
 
 @media not screen and (min-width: 760px) {
     .tab {
-        padding: 8px;
+        padding: 12px;
         flex: 1 1 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: #818c95;
+        color: #818b96;
         outline: none;
     }
 
@@ -89,7 +91,7 @@
     }
 
     .selectedM {
-        color: #58a1c5;
+        color: #45a7d8;
     }
 }
 

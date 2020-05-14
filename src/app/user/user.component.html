@@ -1,4 +1,4 @@
-<nav class="standardNav" *ngIf="!mobile">
+<nav class="standardNav" *ngIf="!mobile && user.userdata">
     <a class="username-link" [routerLink]="['/']">
         <div class="title">
             <span class="blue">ani</span>stats
@@ -21,7 +21,7 @@
         <span class="tab-text">Overview</span>
     </div>
     <div class="tab" [class.selectedM]="name == 'series'" [routerLink]="['series']">
-        <i class="material-icons tab-icon">library_books</i>
+        <i class="material-icons tab-icon">view_agenda</i>
         <span class="tab-text">Series statistics</span>
     </div>
 </nav>

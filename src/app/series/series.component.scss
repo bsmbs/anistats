@@ -1,3 +1,5 @@
+$sidebarColor: #0d1724;
+
 .expander {
     display: flex;
     align-items: center;
@@ -15,6 +17,10 @@
     .expander {
         display: none;
     }
+
+    .side-search {
+        margin-left: 16px;
+    }
 }
 
 @media not screen and (min-width: 1024px) {
@@ -25,13 +31,14 @@
 
 .sidebar {
     margin: 10px;
-    background: #151f2e; //#1f232d;
+    background: $sidebarColor;
     border-radius: 5px;
     flex-basis: 400px;
     min-height: 0;
     overflow-y: scroll;
     scrollbar-width: none;
     grid-column: 1;
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -40,7 +47,7 @@
 
 .search-ct {
     display: flex;
-    background: #151f2e;
+    background: $sidebarColor;
     top: 0;
     position: sticky;
 }
@@ -50,26 +57,29 @@
     
     width: 100%;
     padding: 12px 0;
-    margin-left: 16px;
 
     outline: none;
     border: none;
-    background: #151f2e;
+    background: $sidebarColor;
     font: inherit;
     font-weight: 600;
     color: #cedfeb;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+
+    &::placeholder {
+        color: #ffffff91;
+    }
 }
 
 .side-item {
-    padding: 10px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     transition: background 200ms;
     cursor: pointer;
 
     &:hover {
-        background: #124259;
+        background: #1776a1;
     }
 }
 
@@ -168,6 +178,21 @@
 @media screen and (min-width: 760px) {
     .stat {
         border-right: 1px solid #424a5e;
+    }
+}
+
+@media not screen and (min-width: 760px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 3;
+        max-height: 100%;
+    }
+
+    .banner {
+        padding-top: 80px;
     }
 }
 
