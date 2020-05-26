@@ -94,7 +94,7 @@
 }
 
 .chart-container {
-  background: #151f2e;
+  background: #1f232d;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   padding-bottom: 3px;
@@ -106,7 +106,6 @@
   padding: 10px 16px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background: #151f2e; //#2d313d;
 }
 
 .chart-title {
@@ -128,7 +127,7 @@
 
 // List
 .series-chart {
-  background: #151f2e; //#2d313d;
+  background: #2d313d;
 }
 
 .list {
@@ -136,7 +135,7 @@
 }
 
 .list-header {
-  background: #151f2e; //#2d313d;
+  background: #2d313d;
   display: flex;
   align-items: center;
   padding: 8px 12.944px;
@@ -173,7 +172,7 @@
   padding: 10px 5px;
   display: flex;
   align-items: center;
-  background: #0e1824; //#252933;
+  background: #252933;
   transition: .1s;
   
   border-left: 0 solid #1b4b61;
@@ -229,7 +228,7 @@
 // SUMMARY
 .summary {
   padding: 10px;
-  background: #151f2e; //#2d313d;
+  background: #2d313d;
   display: flex;
 }
 

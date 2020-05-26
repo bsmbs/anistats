@@ -1,7 +1,7 @@
 .standardNav {
     display: flex;
     align-items: center;
-    background: #152232;
+    background: #1f232d;
     position: sticky;
     top: 0;
     z-index: 3;
@@ -12,7 +12,7 @@
 .mobileNav {
     position: fixed;
     width: 100%;
-    background: #141c27;
+    background: #1f232d; //#141c27;
     bottom: 0;
     display: flex;
     opacity: 0.9;
@@ -41,7 +41,7 @@
 .username {
     display: flex;
     align-items: center;
-    background: #0b1522;
+    background: #1b1e25;
     padding: 16px 20px;
     transition: 200ms;
 
