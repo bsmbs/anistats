@@ -75,11 +75,13 @@ $sidebarColor: #0d1724;
     padding: 10px 15px;
     display: flex;
     align-items: center;
-    transition: background 200ms;
-    cursor: pointer;
 
+    cursor: pointer;
+    
+    transition: border-left-width .1s;
+    border-left: 0 solid #1b4b61;
     &:hover {
-        background: #1776a1;
+        border-left-width: 3px;
     }
 }
 

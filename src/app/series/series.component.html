@@ -8,9 +8,9 @@
             <input placeholder="Filter by name..." class="side-search" type="search" [(ngModel)]="search" (focus)="hidden = false; search = ''">
         </div>
         <div *ngIf="!hidden || !mobile">
-            <div class="side-item" *ngFor="let l of list" (click)="go(l.id)">
+            <div class="side-item" *ngFor="let l of list">
                 <img class="side-thumbnail" [src]="l.coverImage.medium" lazy>
-                <span class="side-title" [title]="l.title.romaji">{{ l.title.romaji }}</span>
+                <span class="side-title" [title]="l.title.romaji" (click)="go(l.id)">{{ l.title.romaji }}</span>
             </div>
         </div>
     </div>

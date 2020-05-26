@@ -70,8 +70,6 @@ export class SeriesComponent implements OnInit {
       this.current = this.statsSerivce.parseActivities(r.Page.activities);
       this.loading = false;
 
-      this.search = r.Media.title.romaji;
-      
       if (this.current.length == 0) {
         this.currentData = {
           id: r.Media.id,

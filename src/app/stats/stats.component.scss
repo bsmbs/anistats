@@ -79,7 +79,7 @@
   }
 
   .chart-container {
-    margin: 20px;
+    margin: 12px 20px;
   }
 
   .mobile {
@@ -94,10 +94,10 @@
 }
 
 .chart-container {
-  //background: //#1f232d;
+  background: #151f2e;
   border-radius: 6px;
-  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #273851; //#4c5162;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  padding-bottom: 3px;
 }
 
 .chart-header {
@@ -132,7 +132,7 @@
 }
 
 .list {
-  border: 1px solid #273851; //#4c5162;
+  border-bottom: 2px solid #273851; //#4c5162;
 }
 
 .list-header {
@@ -174,11 +174,12 @@
   display: flex;
   align-items: center;
   background: #0e1824; //#252933;
-  transition: 200ms;
-  cursor: pointer;
+  transition: .1s;
+  
+  border-left: 0 solid #1b4b61;
 
   &:hover {
-    background: #192a3f;
+    border-left-width: 3px;
   }
 
   &:active {
@@ -186,7 +187,7 @@
   }
 }
 
-.list-item, a {
+.list-item > a {
   color: inherit;
   text-decoration: none;
   outline: none;
