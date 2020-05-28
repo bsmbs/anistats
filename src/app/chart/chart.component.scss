@@ -31,7 +31,7 @@
 .bar {
   height: 100%;
   width: 32px;
-  background-color: #1f7dac;
+  background-color: var(--color-bars);
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
@@ -40,7 +40,7 @@
   padding: 10px;
   display: flex;
   text-align: center;
-  background: #2d313d;
+  background: var(--color-bg-lighter);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px
 }

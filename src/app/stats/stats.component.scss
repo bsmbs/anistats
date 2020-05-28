@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
 
-  background: #1f7dac;
+  background: var(--color-bars);
   padding: 5px;
   font-size: .9em;
   border-radius: 3px;
@@ -94,7 +94,7 @@
 }
 
 .chart-container {
-  background: #1f232d;
+  background: var(--color-bg-darker);
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   padding-bottom: 3px;
@@ -121,13 +121,13 @@
 
   &:hover:not(.inactive) {
     cursor: pointer;
-    background: #1f7dac;
+    background: var(--color-bars);
   }
 }
 
 // List
 .series-chart {
-  background: #2d313d;
+  background: var(--color-bg-lighter);
 }
 
 .list {
@@ -135,7 +135,7 @@
 }
 
 .list-header {
-  background: #2d313d;
+  background: var(--color-bg-lighter);
   display: flex;
   align-items: center;
   padding: 8px 12.944px;
@@ -217,7 +217,7 @@
   border-bottom-right-radius: 6px;
 
   &:hover {
-    background: #1f7dac;
+    background: var(--color-bars);
   }
 
   &:active {
@@ -228,7 +228,7 @@
 // SUMMARY
 .summary {
   padding: 10px;
-  background: #2d313d;
+  background: var(--color-bg-lighter);
   display: flex;
 }
 
