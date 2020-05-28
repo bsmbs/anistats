@@ -1,0 +1,8 @@
+<div class="calendar">
+    <div class="day" 
+    *ngFor="let day of days" 
+    [style]="(day.day == 1) ? { gridColumn: firstWeekday } : {}"
+    [style.opacity]="dColor(day.eps)">
+        <div class="day-content">{{ day.day }}</div>
+    </div>
+</div>

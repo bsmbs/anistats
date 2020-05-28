@@ -12,6 +12,7 @@ import { ChartComponent } from './chart/chart.component';
 import { UserComponent } from './user/user.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SeriesComponent } from './series/series.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SeriesComponent } from './series/series.component';
     ChartComponent,
     UserComponent,
     SpinnerComponent,
-    SeriesComponent
+    SeriesComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

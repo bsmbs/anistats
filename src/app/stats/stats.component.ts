@@ -17,6 +17,7 @@ export class StatsComponent implements OnInit {
 
   movingValue: Subject<number> = new Subject();
   movingToday: Subject<number> = new Subject();
+  updating: Subject<boolean> = new Subject();
 
   loading: boolean = true;
 
@@ -102,6 +103,8 @@ export class StatsComponent implements OnInit {
   loadEarlier() {
     if(this.statsService.lock) return;
     this.statsService.loadEarlier();
+
+    this.updating.next(true);
   }
 
   more(id: number) {

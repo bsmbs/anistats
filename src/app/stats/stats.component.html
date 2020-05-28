@@ -7,6 +7,12 @@
 <div class="grid" *ngIf="!loading">
   <div class="grid-column">
 
+    <div class="chart-container">
+      <div class="chart-header">
+        <span class="chart-title">Episodes</span>
+      </div>
+      <app-calendar [data]="activities" [update]="updating"></app-calendar>
+    </div>
     <!-- EPISODES CHART -->
     <div class="week-chart chart-container">
       <div class="chart-header">
