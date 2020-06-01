@@ -15,8 +15,6 @@ import { activityDateFromDate } from '../activity-day';
 export class StatsComponent implements OnInit {
   todayIndex: number = 0;
 
-  movingValue: Subject<number> = new Subject();
-  movingToday: Subject<number> = new Subject();
   updating: Subject<boolean> = new Subject();
 
   loading: boolean = true;
@@ -89,10 +87,6 @@ export class StatsComponent implements OnInit {
 
     const diff = Math.ceil(Math.abs(last - now.getTime()) / (1000 * 60 * 60 * 24)) + 1;
     return (sum / diff).toFixed(2);
-  }
-
-  move(val: number) {
-    this.movingValue.next(val);
   }
 
   todayMove(pos) {

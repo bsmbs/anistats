@@ -23,10 +23,10 @@
           <app-spinner class="range-spinner" size="small" *ngIf="statsService.lock"></app-spinner>
           <span class="range-btn-text">Load more</span>
         </div>
-        <i class="material-icons chart-arrow" (click)="move(-400)">keyboard_arrow_left</i>
-        <i class="material-icons chart-arrow" (click)="move(400)">keyboard_arrow_right</i>
+        <i class="material-icons chart-arrow">keyboard_arrow_left</i>
+        <i class="material-icons chart-arrow">keyboard_arrow_right</i>
       </div>
-      <app-chart [data]="activities" [moving]="movingValue"></app-chart>
+      <app-chart [data]="activities"></app-chart>
     </div>
 
     <!-- SUMMARY -->
@@ -55,7 +55,7 @@
         <i class="material-icons chart-arrow" [class.inactive]="todayIndex == 0"
           (click)="todayMove(-1)">keyboard_arrow_right</i>
       </div>
-      <app-chart [data]="today" [moving]="movingToday"></app-chart>
+      <app-chart [data]="today"></app-chart>
     </div>
     <footer class="mobile">anistats is not affiliated with AniList. Source on <a
         href="https://github.com/pizza61/anistats">GitHub</a></footer>

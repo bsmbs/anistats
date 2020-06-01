@@ -8,7 +8,6 @@ import { Subject } from 'rxjs';
 })
 export class ChartComponent implements OnChanges, OnInit {
   @Input() data;
-  @Input() moving: Subject<number>;
 
   @ViewChild('chartel') chartel: ElementRef;
 
@@ -23,12 +22,7 @@ export class ChartComponent implements OnChanges, OnInit {
    }
 
   ngOnInit() {
-    this.moving.subscribe(v => {
-      this.chartel.nativeElement.scrollBy({
-        left: v,
-        behavior: 'smooth'
-      });
-    });
+
   }
 
   ngOnChanges(): void {

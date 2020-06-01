@@ -108,15 +108,15 @@ export class StatsService {
     return apiResp;
   }
 
-  loadEarlier() {
+  async loadEarlier() {
       this.activities = this.activities.concat(this.prefetchedActivities);
 
       if (this.apiLastPage == this.apiPage) return;
       this.lock = true;
       this.apiPage++;
 
-      this.prefetch();
-
+      await this.prefetch();
+      return this.activities;
   }
 
   prefetch() {
