@@ -4,7 +4,7 @@ import { StatsService } from './stats.service';
 import { UserService } from '../user/user.service';
 import { MonthPipe } from '../month.pipe';
 import { Subject } from 'rxjs';
-import { activityDateFromDate, ActivityDay, FormattedActivity } from '../activity-day';
+import { activityDateFromDate, ActivityDay, FormattedActivity, ActivityDate } from '../activity-day';
 
 @Component({
   selector: 'app-stats',
@@ -42,6 +42,14 @@ export class StatsComponent implements OnInit {
       topText: x.day.date + '.' + this.monthPipe.transform(x.day.month) + '.' + x.day.year,
       bottomText: x.day.weekday
     }));
+  }
+
+  handleCalendar(event: ActivityDate | number) {
+    if(typeof event == 'number') {
+      this.loadEarlier();
+    } else {
+      console.log("work");
+    }
   }
 
   get today() {
@@ -99,16 +107,25 @@ export class StatsComponent implements OnInit {
 
   async loadEarlier() {
     if(this.statsService.lock) return;
-    this.updating.next(0);
+    this.updating.next(0); // SIGNAL: LOADING START
 
     await this.statsService.loadEarlier();
 
     this.activities = this.formatActivities(this.statsService.activities).reverse();
-    this.updating.next(1);
+    this.updating.next(1); // SIGNAL: LOADING COMPLETE
   }
 
   more(id: number) {
     this.router.navigate(['series', id], { relativeTo: this.route.parent});
+  }
+
+  // CALENDAR FUNCTIONS
+  calendarBack(): void {
+    this.updating.next(3); // Signal: MONTH--
+  }
+
+  calendarForward(): void {
+    this.updating.next(2); // Signal: MONTH++
   }
 
   ngOnInit(): void {

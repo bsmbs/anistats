@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { ActivityDay, FormattedActivity } from '../activity-day';
+import { Component, EventEmitter, OnInit, Input, OnChanges, Output } from '@angular/core';
+import { FormattedActivity, ActivityDate } from '../activity-day';
 import { Subject } from 'rxjs';
+import { StatsService } from '../stats/stats.service';
 
 @Component({
   selector: 'app-calendar',
@@ -10,58 +11,107 @@ import { Subject } from 'rxjs';
 export class CalendarComponent implements OnInit, OnChanges {
   @Input() data: FormattedActivity[];
   @Input() update?: Subject<number>;
+  @Output() events = new EventEmitter<ActivityDate|number>()
   
   monthDays: number = 0;
   firstWeekday: number = 0;
+  lastDay: number = 0;
+
   maxEps: number = 0;
+
+  currentMonth: number = 4;
+  currentYear: number = 2020;
 
   days = [];
 
-  constructor() { }
+  constructor(private statsSerivce: StatsService) { }
 
   ngOnInit(): void {
   }
 
   ngOnChanges(changes) {
     if(changes["data"] && this.data) {
-      this.days.length = 0;
-        this.loadMonth(4, 2020)
+        this.loadMonth(this.currentMonth, this.currentYear);
         console.dir(this.data)
+    }
+
+    if(changes["update"] && this.update) {
+      this.update.subscribe(v => {
+        switch(v) {
+          case 2: // MONTH++
+            if(this.currentMonth+1 > 11) {
+              this.currentYear++;
+              this.currentMonth = -1;
+            }
+
+            this.currentMonth++;
+            this.loadMonth(this.currentMonth, this.currentYear);
+            break;
+          case 3: // MONTH--
+            if(this.currentMonth-1 < 0) {
+              this.currentYear--
+              this.currentMonth = 12;
+            };
+
+            this.currentMonth--;
+            this.loadMonth(this.currentMonth, this.currentYear);
+            break;
+        }
+      })
     }
   }
 
-  loadMonth(month, year) {  
+  loadMonth(month, year) {
+    // Clear current display
+    this.days.length = 0;
+    this.lastDay = 0;
+
     let firstDay = new Date(year, month, 1);
     this.firstWeekday = firstDay.getDay();
+    if(this.firstWeekday == 0) this.firstWeekday = 7;
+
+    this.statsSerivce.calendarDisplay.month = new Intl.DateTimeFormat('default', { month: 'long' }).format(firstDay);
+    this.statsSerivce.calendarDisplay.year = year;
 
     let monthDays = this.daysInMonth(month, year);
 
     this.maxEps = Math.max.apply(Math, this.data.map(x => x.eps));
 
+    const lastActivity = this.data[0].day;
+    if(lastActivity.month == month+1 && lastActivity.year == year) {
+      this.lastDay = lastActivity.date
+    } else if (month+1 < lastActivity.month && lastActivity.year == year) {
+      this.lastDay = 100;
+    } else if (year < lastActivity.year) {
+      this.lastDay = 100;
+    }
+    
     for (let i = 1; i <= monthDays; i++) {
       let ad = this.data.find(x => x.day.date == i && x.day.month == month+1 && x.day.year == year);
         this.days.push({
           day: i,
+          dayObj: ad,
+          is: (!ad && i < this.lastDay ? false : true),
           eps: (ad ? ad.eps : 0)
         });
     }
   }
   
+  handleClick(day) {
+    if(day.dayObj) {
+      this.events.emit(day.dayObj);
+    } else if (!day.is) {
+      this.events.emit(0);
+    }
+  }
+
   dColor(eps) {
     let r = eps/this.maxEps;
 
     //return r;
-
-    switch(true) {
-      case (r < 0.2):
-        return '0.25';
-      case (r < 0.4):
-        return '0.4';
-      case (r < 0.7):
-        return '0.7';
-      default:
-        return '1';
-    }
+    if (r == 0) return 0;
+    else if (r < 0.15) return 0.15;
+    else return r;
   }
 
   daysInMonth(m, y) {

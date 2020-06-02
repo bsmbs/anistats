@@ -17,6 +17,10 @@ export class StatsService {
   apiLastPage: number;
 
   daysStrings = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  calendarDisplay = {
+    month: null,
+    year: null
+  };
 
   constructor() { }
 
