@@ -4,7 +4,7 @@ import { StatsService } from './stats.service';
 import { UserService } from '../user/user.service';
 import { MonthPipe } from '../month.pipe';
 import { Subject } from 'rxjs';
-import { activityDateFromDate } from '../activity-day';
+import { activityDateFromDate, ActivityDay, FormattedActivity } from '../activity-day';
 
 @Component({
   selector: 'app-stats',
@@ -14,8 +14,9 @@ import { activityDateFromDate } from '../activity-day';
 })
 export class StatsComponent implements OnInit {
   todayIndex: number = 0;
+  activities: FormattedActivity[];
 
-  updating: Subject<boolean> = new Subject();
+  updating: Subject<number> = new Subject();
 
   loading: boolean = true;
 
@@ -26,15 +27,17 @@ export class StatsComponent implements OnInit {
           this.statsService.activities = this.statsService.parseActivities(resp.data.data.Page.activities);
           await this.statsService.prefetch();
 
+          this.activities = this.formatActivities(this.statsService.activities).reverse();
           this.loading = false;
         });
     } else {
+      this.activities = this.formatActivities(this.statsService.activities).reverse();
       this.loading = false;
     }
   }
 
-  get activities() {
-    return this.statsService.activities.map(x => ({
+  formatActivities(a: ActivityDay[]): FormattedActivity[] {
+    return a.map(x => ({
       ...x,
       topText: x.day.date + '.' + this.monthPipe.transform(x.day.month) + '.' + x.day.year,
       bottomText: x.day.weekday
@@ -83,7 +86,7 @@ export class StatsComponent implements OnInit {
     .reduce((a, b) => a + b);
 
     const now = new Date();
-    const last = this.activities[this.activities.length-1].day.time;
+    const last = this.activities[0].day.time;
 
     const diff = Math.ceil(Math.abs(last - now.getTime()) / (1000 * 60 * 60 * 24)) + 1;
     return (sum / diff).toFixed(2);
@@ -94,11 +97,14 @@ export class StatsComponent implements OnInit {
     this.todayIndex += pos;
   }
 
-  loadEarlier() {
+  async loadEarlier() {
     if(this.statsService.lock) return;
-    this.statsService.loadEarlier();
+    this.updating.next(0);
 
-    this.updating.next(true);
+    await this.statsService.loadEarlier();
+
+    this.activities = this.formatActivities(this.statsService.activities).reverse();
+    this.updating.next(1);
   }
 
   more(id: number) {

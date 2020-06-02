@@ -20,6 +20,12 @@ export interface ActivityMedia {
     planning?: ActivityDate
 }
 
+export interface FormattedActivity extends ActivityDay {
+  topText: string,
+  bottomText: string,
+  bottomImage?: string
+}
+
 export const fetchQuery = `
     query ($userId: Int, $page: Int, $perPage: Int) {
       Page (page: $page, perPage: $perPage) {

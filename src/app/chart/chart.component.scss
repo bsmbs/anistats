@@ -5,7 +5,11 @@
   overflow-x: scroll;
   scrollbar-width: none;
   cursor: grab;
+  user-select: none;
+  
   margin-top: 10px;
+
+  position: relative;
 }
 
 .chart::-webkit-scrollbar {
@@ -125,4 +129,16 @@
 
 .value {
   font-weight: 600;
+}
+
+/* Loading */
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+
+  transition: 200ms;
 }

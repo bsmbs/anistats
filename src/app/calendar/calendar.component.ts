@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivityDay } from '../activity-day';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { ActivityDay, FormattedActivity } from '../activity-day';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -7,9 +7,9 @@ import { Subject } from 'rxjs';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
-  @Input() data: ActivityDay[];
-  @Input() update?: Subject<boolean>;
+export class CalendarComponent implements OnInit, OnChanges {
+  @Input() data: FormattedActivity[];
+  @Input() update?: Subject<number>;
   
   monthDays: number = 0;
   firstWeekday: number = 0;
@@ -20,11 +20,14 @@ export class CalendarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.update.subscribe(v => {
-      console.log("u")
+  }
+
+  ngOnChanges(changes) {
+    if(changes["data"] && this.data) {
       this.days.length = 0;
-      this.loadMonth(4, 2020)
-    })
+        this.loadMonth(4, 2020)
+        console.dir(this.data)
+    }
   }
 
   loadMonth(month, year) {  

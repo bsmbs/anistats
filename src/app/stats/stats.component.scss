@@ -113,15 +113,32 @@
   font-size: 1.2em;
 }
 
+.chart-subtitle {
+  padding: 3px 12px;
+  margin: 0 3px;
+
+  font-weight: 600;
+  text-align: center;
+
+  background: var(--color-bg-lighter);
+  border-radius: 3px;
+}
+
 .chart-arrow {
-  margin-left: 5px;
-  border-radius: 24px;
-  transition: 200ms;
+  border-radius: 3px;
+  transition: all 200ms, opacity 400ms;
   user-select: none;
+  padding: 3px;
 
   &:hover:not(.inactive) {
     cursor: pointer;
-    background: var(--color-bars);
+
+    background: var(--color-bg-lighter);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+  }
+
+  &:active {
+    opacity: 0.7;
   }
 }
 
