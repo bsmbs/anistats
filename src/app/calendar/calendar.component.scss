@@ -1,4 +1,4 @@
-.calendar {
+.days, .weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 
@@ -9,15 +9,90 @@
     padding: 12px 12px 8px 12px;
     margin: 3px;
 
-    //border: 3px solid var(--color-bg-lighter);
     border-radius: 4px;
     text-align: center;
     
-    background: #236f95;
 
     display: flex;
     justify-content: center;
 
     font-weight: 600;
+    user-select: none;
 
+    filter: none;
+
+    // for tooltip
+    position: relative;
+
+
+    &:hover {
+        .day-bg {
+            filter: brightness(150%);
+        }
+
+        .day-tooltip {
+            display: block;
+            opacity: 1;
+            //transition-delay: .1s;
+            //top: -125px;
+        }
+    }
+}
+
+.day-content {
+    z-index: 1;
+}
+
+.day-tooltip {
+    display: none;
+    position: absolute;
+    background: #16181ae5;
+    border-radius: 4px;
+
+    top: -60px;
+    padding: 6px;
+    margin: 16px;
+    font-size: .9em;  
+    
+    width: 120px;
+    
+    opacity: 0;
+
+    z-index: 2;
+}
+
+.day-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #16181ae5 transparent transparent transparent;
+}
+
+.day-bg {
+    background: #236f95;
+    position: absolute;
+    border-radius: 4px;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 0;
+
+    transition: all 200ms ease;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: 600;
+
+    font-size: .9em;
+
+    border-right: 1px solid var(--color-bg-lighter);
 }

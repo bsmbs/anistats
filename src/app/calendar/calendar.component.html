@@ -1,9 +1,22 @@
 <div class="calendar">
-    <div class="day" 
-    *ngFor="let day of days" 
-    [style]="(day.day == 1) ? { gridColumn: firstWeekday } : {}"
-    [style.opacity]="dColor(day.eps)"
-    [title]="'Episodes: '+day.eps">
-        <div class="day-content">{{ day.day }}</div>
+    <div class="weekdays">
+        <div class="weekday">Mon</div>
+        <div class="weekday">Tue</div>
+        <div class="weekday">Wed</div>
+        <div class="weekday">Thu</div>
+        <div class="weekday">Fri</div>
+        <div class="weekday">Sat</div>
+        <div class="weekday">Sun</div>
     </div>
+    <div class="days">
+        <div class="day" 
+        *ngFor="let day of days" 
+        [style]="(day.day == 1) ? { gridColumn: firstWeekday } : {}"
+        (click)="handleClick(day)">
+            <div class="day-bg" [style.opacity]="dColor(day.eps)"></div>
+            <div class="day-content" [style.opacity]="(!day.is ? 0.5 : '')">{{ day.day }}</div>
+            <div class="day-tooltip">{{ day.is ? day.eps+' episodes' : 'Click to load' }}</div>
+        </div>
+    </div>
+    
 </div>
