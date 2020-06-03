@@ -19,14 +19,19 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   maxEps: number = 0;
 
-  currentMonth: number = 4;
+  currentMonth: number = 0;
   currentYear: number = 2020;
 
   days = [];
 
-  constructor(private statsSerivce: StatsService) { }
+  constructor(private statsSerivce: StatsService) { 
+    const now = new Date();
+    this.currentMonth = now.getMonth();
+    this.currentYear = now.getFullYear();
+  }
 
   ngOnInit(): void {
+
   }
 
   ngOnChanges(changes) {
@@ -36,6 +41,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     }
 
     if(changes["update"] && this.update) {
+      
       this.update.subscribe(v => {
         switch(v) {
           case 2: // MONTH++

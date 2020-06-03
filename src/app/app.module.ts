@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SeriesComponent } from './series/series.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ItemComponent } from './list/item/item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     UserComponent,
     SpinnerComponent,
     SeriesComponent,
-    CalendarComponent
+    CalendarComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
