@@ -11,7 +11,7 @@ import { StatsService } from '../stats/stats.service';
 export class CalendarComponent implements OnInit, OnChanges {
   @Input() data: FormattedActivity[];
   @Input() update?: Subject<number>;
-  @Output() events = new EventEmitter<ActivityDate|number>()
+  @Output() events = new EventEmitter<FormattedActivity|number>()
   
   monthDays: number = 0;
   firstWeekday: number = 0;

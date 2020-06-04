@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StatsService } from './stats.service';
 import { UserService } from '../user/user.service';
 import { MonthPipe } from '../month.pipe';
 import { Subject } from 'rxjs';
 import { activityDateFromDate, ActivityDay, FormattedActivity, ActivityDate } from '../activity-day';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-stats',
@@ -13,6 +14,8 @@ import { activityDateFromDate, ActivityDay, FormattedActivity, ActivityDate } fr
   providers: [MonthPipe]
 })
 export class StatsComponent implements OnInit {
+  @ViewChild('popup') popup: PopupComponent;
+
   todayIndex: number = 0;
   activities: FormattedActivity[];
 
@@ -51,11 +54,12 @@ export class StatsComponent implements OnInit {
     }));
   }
 
-  handleCalendar(event: ActivityDate | number) {
+  handleCalendar(event: FormattedActivity | number) {
     if(typeof event == 'number') {
       this.loadEarlier();
     } else {
-      console.log("work");
+      console.dir(event)
+      this.popup.openDay(event);
     }
   }
 
