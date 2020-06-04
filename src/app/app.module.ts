@@ -14,6 +14,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SeriesComponent } from './series/series.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ItemComponent } from './list/item/item.component';
+import { DayPopupComponent } from './popup/day-popup/day-popup.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ItemComponent } from './list/item/item.component';
     SpinnerComponent,
     SeriesComponent,
     CalendarComponent,
-    ItemComponent
+    ItemComponent,
+    DayPopupComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,3 @@
+<div class="container" (click)="close()" *ngIf="isOpen" [@pop]>
+    <app-day-popup (click)="$event.stopPropagation()" [data]="data"></app-day-popup>
+</div>
