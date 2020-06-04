@@ -28,8 +28,15 @@ export class StatsComponent implements OnInit {
           await this.statsService.prefetch();
 
           this.activities = this.formatActivities(this.statsService.activities).reverse();
+
+          if(this.activities.length == 0) {
+            // todo some fancy error message
+            this.router.navigateByUrl('/');
+            alert("Sorry, anistats can't access this account because it's private or has no activity")
+          }
+
           this.loading = false;
-        });
+        })
     } else {
       this.activities = this.formatActivities(this.statsService.activities).reverse();
       this.loading = false;
@@ -82,10 +89,11 @@ export class StatsComponent implements OnInit {
     const now = new Date();
     now.setDate(now.getDate() - 6);
 
-    return this.activities
+    const r = this.activities
     .filter(x => x.day.time > now.getTime())
     .map(x => x.eps)
-    .reduce((a, b) => a + b);
+    if (r.length > 0) return r.reduce((a, b) => a + b);
+    else return 0;
   }
 
   get average() {
