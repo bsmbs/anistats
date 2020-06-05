@@ -8,7 +8,7 @@
 
 ## Screenshots
 
-![Mobile view](https://i.imgur.com/GNDFeTF.png)
+<img src="https://i.imgur.com/GNDFeTF.png" alt="Mobile view" height="800">
 
 ## Development
 
