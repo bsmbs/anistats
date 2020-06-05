@@ -7,6 +7,16 @@
 <div class="grid" *ngIf="!loading">
   <div class="grid-column">
 
+    <div class="chart-container">
+      <div class="chart-header">
+        <span class="chart-title">Activity</span>
+        <span style="flex: 1"></span>
+        <span class="chart-subtitle">{{ statsService.calendarDisplay.month }} {{ statsService.calendarDisplay.year }}</span>
+        <i class="material-icons chart-arrow" (click)="calendarBack()">keyboard_arrow_left</i>
+        <i class="material-icons chart-arrow" (click)="calendarForward()">keyboard_arrow_right</i>
+      </div>
+      <app-calendar (events)="handleCalendar($event)" [data]="activities" [update]="updating"></app-calendar>
+    </div>
     <!-- EPISODES CHART -->
     <div class="week-chart chart-container">
       <div class="chart-header">
@@ -17,10 +27,8 @@
           <app-spinner class="range-spinner" size="small" *ngIf="statsService.lock"></app-spinner>
           <span class="range-btn-text">Load more</span>
         </div>
-        <i class="material-icons chart-arrow" (click)="move(-400)">keyboard_arrow_left</i>
-        <i class="material-icons chart-arrow" (click)="move(400)">keyboard_arrow_right</i>
       </div>
-      <app-chart [data]="activities" [moving]="movingValue"></app-chart>
+      <app-chart [data]="activities" [update]="updating"></app-chart>
     </div>
 
     <!-- SUMMARY -->
@@ -38,19 +46,7 @@
           <div class="summary-key">Average</div>
       </div>
     </div>
-
-    <!-- DAILY CHART -->
-    <div class="overview-chart chart-container">
-      <div class="chart-header">
-        <span class="chart-title">{{ todayDate.formattedWeekday }}, {{ todayDate.formatted }}</span>
-        <span style="flex: 1"></span>
-        <i class="material-icons chart-arrow" [class.inactive]="todayIndex+1 == activities.length"
-          (click)="todayMove(1)">keyboard_arrow_left</i>
-        <i class="material-icons chart-arrow" [class.inactive]="todayIndex == 0"
-          (click)="todayMove(-1)">keyboard_arrow_right</i>
-      </div>
-      <app-chart [data]="today" [moving]="movingToday"></app-chart>
-    </div>
+    
     <footer class="mobile">anistats is not affiliated with AniList. Source on <a
         href="https://github.com/pizza61/anistats">GitHub</a></footer>
   </div>
@@ -76,16 +72,11 @@
           <span class="prop-key">Anime</span>
         </div>
       </div>
-      <div class="list-item" *ngFor="let anime of day.anime" >
-        <img class="item-image" [src]="anime.image">
-        <a class="item-title" [routerLink]="['../series/'+anime.id]">{{ anime.title }}</a>
-        <span style="flex: 1"></span>
-        <div class="list-header-prop">
-          <span class="prop-value">{{ anime.eps }}</span>
-          <span class="prop-key">Episodes</span>
-        </div>
-      </div>
+      
+      <app-item *ngFor="let anime of day.anime" [anime]="anime"></app-item>
+    
     </div>
     <div class="list-load" *ngIf="statsService.nextPage" (click)="loadEarlier()">Load more</div>
   </div>
 </div>
+<app-popup #popup></app-popup>

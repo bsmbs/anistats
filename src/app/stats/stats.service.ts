@@ -17,6 +17,10 @@ export class StatsService {
   apiLastPage: number;
 
   daysStrings = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  calendarDisplay = {
+    month: null,
+    year: null
+  };
 
   constructor() { }
 
@@ -108,15 +112,15 @@ export class StatsService {
     return apiResp;
   }
 
-  loadEarlier() {
+  async loadEarlier() {
       this.activities = this.activities.concat(this.prefetchedActivities);
 
       if (this.apiLastPage == this.apiPage) return;
       this.lock = true;
       this.apiPage++;
 
-      this.prefetch();
-
+      await this.prefetch();
+      return this.activities;
   }
 
   prefetch() {

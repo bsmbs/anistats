@@ -3,7 +3,7 @@
 body {
     font-family: 'Baloo Thambi 2', cursive;
     color: white;
-    background:linear-gradient(to bottom, #272c38, #2e333e);
+    background: #272c38;
     margin: 0;
 }
 
@@ -20,4 +20,11 @@ footer {
     font-weight: 600;
     font-size: .9em;
     color: #a6aebd;
-  }
+}
+
+:root {
+    --color-bg-lighter: #2d313d;
+    --color-bg-darker: #1f232d;
+
+    --color-bars: #1f7dac;
+}

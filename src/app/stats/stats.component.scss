@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
 
-  background: #1f7dac;
+  background: var(--color-bars);
   padding: 5px;
   font-size: .9em;
   border-radius: 3px;
@@ -94,7 +94,7 @@
 }
 
 .chart-container {
-  background: #1f232d;
+  background: var(--color-bg-darker);
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   padding-bottom: 3px;
@@ -113,21 +113,38 @@
   font-size: 1.2em;
 }
 
+.chart-subtitle {
+  padding: 3px 12px;
+  margin: 0 3px;
+
+  font-weight: 600;
+  text-align: center;
+
+  background: var(--color-bg-lighter);
+  border-radius: 3px;
+}
+
 .chart-arrow {
-  margin-left: 5px;
-  border-radius: 24px;
-  transition: 200ms;
+  border-radius: 3px;
+  transition: all 200ms, opacity 400ms;
   user-select: none;
+  padding: 3px;
 
   &:hover:not(.inactive) {
     cursor: pointer;
-    background: #1f7dac;
+
+    background: var(--color-bg-lighter);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+  }
+
+  &:active {
+    opacity: 0.7;
   }
 }
 
 // List
 .series-chart {
-  background: #2d313d;
+  background: var(--color-bg-lighter);
 }
 
 .list {
@@ -135,7 +152,7 @@
 }
 
 .list-header {
-  background: #2d313d;
+  background: var(--color-bg-lighter);
   display: flex;
   align-items: center;
   padding: 8px 12.944px;
@@ -168,45 +185,6 @@
   font-size: 0.76em;
 }
 
-.list-item {
-  padding: 10px 5px;
-  display: flex;
-  align-items: center;
-  background: #252933;
-  transition: .1s;
-  
-  border-left: 0 solid #1b4b61;
-
-  &:hover {
-    border-left-width: 3px;
-  }
-
-  &:active {
-    opacity: 0.7;
-  }
-}
-
-.list-item > a {
-  color: inherit;
-  text-decoration: none;
-  outline: none;
-}
-
-.item-image {
-  width: 36px;
-  height: 36px;
-  object-fit: cover;
-  border-radius: 3px;
-  margin: 0 10px;
-}
-
-.item-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 80%;
-}
-
 .list-load {
   padding: 20px;
   text-align: center;
@@ -217,7 +195,7 @@
   border-bottom-right-radius: 6px;
 
   &:hover {
-    background: #1f7dac;
+    background: var(--color-bars);
   }
 
   &:active {
@@ -228,7 +206,7 @@
 // SUMMARY
 .summary {
   padding: 10px;
-  background: #2d313d;
+  background: var(--color-bg-lighter);
   display: flex;
 }
 

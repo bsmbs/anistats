@@ -1,0 +1,13 @@
+<div class="popup">
+    <div class="popup-header">
+        <span class="header-subtitle">{{ data.bottomText }}</span>
+        <span class="header-title">{{ data.topText }}</span>
+        <span style="flex: 1 1 0;"></span>
+        <div class="list-header-prop">
+            <span class="prop-value">{{ data.eps }}</span>
+            <span class="prop-key">episodes</span>
+        </div>
+        <i class="material-icons header-icon" (click)="closePopup()">close</i>
+    </div>
+    <app-item *ngFor="let a of data.anime" [anime]="a"></app-item>
+</div>

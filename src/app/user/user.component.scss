@@ -1,7 +1,7 @@
 .standardNav {
     display: flex;
     align-items: center;
-    background: #1f232d;
+    background: var(--color-bg-darker);
     position: sticky;
     top: 0;
     z-index: 3;
@@ -12,7 +12,7 @@
 .mobileNav {
     position: fixed;
     width: 100%;
-    background: #1f232d; //#141c27;
+    background: var(--color-bg-darker); //#141c27;
     bottom: 0;
     display: flex;
     opacity: 0.9;

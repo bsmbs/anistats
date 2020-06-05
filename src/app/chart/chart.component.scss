@@ -5,7 +5,11 @@
   overflow-x: scroll;
   scrollbar-width: none;
   cursor: grab;
+  user-select: none;
+  
   margin-top: 10px;
+
+  position: relative;
 }
 
 .chart::-webkit-scrollbar {
@@ -31,7 +35,7 @@
 .bar {
   height: 100%;
   width: 32px;
-  background-color: #1f7dac;
+  background-color: var(--color-bars);
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
@@ -40,7 +44,7 @@
   padding: 10px;
   display: flex;
   text-align: center;
-  background: #2d313d;
+  background: var(--color-bg-lighter);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px
 }
@@ -125,4 +129,16 @@
 
 .value {
   font-weight: 600;
+}
+
+/* Loading */
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+
+  transition: 200ms;
 }

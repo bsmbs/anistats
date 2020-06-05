@@ -1,4 +1,4 @@
-$sidebarColor: #1f232d;
+$sidebarColor: var(--color-bg-darker);
 
 .expander {
     display: flex;
@@ -155,7 +155,7 @@ $sidebarColor: #1f232d;
 }
 
 .banner-more {
-    background: #1f7dac;
+    background: var(--color-bars);
     color: white;
     padding: 5px 12px;
     margin-top: 5px;
@@ -199,7 +199,7 @@ $sidebarColor: #1f232d;
 }
 
 .stat-icon {
-    background: #1f232d;
+    background: var(--color-bg-darker);
     border-radius: 666px;
     padding: 10px;
 }
@@ -224,11 +224,11 @@ $sidebarColor: #1f232d;
     padding-top: 5px;
     margin: 10px;
     border-radius: 6px;
-    background: #1f232d;
+    background: var(--color-bg-darker);
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
 }
 
 .selected {
     background: #124259;
-    border-left: 3px solid #1f7dac;
+    border-left: 3px solid var(--color-bars);
 }
