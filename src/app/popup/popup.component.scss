@@ -14,3 +14,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 696px) {
+    .container {
+        align-items: flex-end;
+    }
+}

@@ -11,13 +11,15 @@
 
     border-radius: 4px;
     text-align: center;
+    font-weight: 600;
     
 
     display: flex;
     justify-content: center;
 
-    font-weight: 600;
+    cursor: pointer;
     user-select: none;
+    transition: opacity 200ms;
 
     filter: none;
 
@@ -27,16 +29,21 @@
 
     &:hover {
         .day-bg {
-            filter: brightness(150%);
+            filter: brightness(90%);
         }
+    }
 
-        .day-tooltip {
-            display: block;
-            opacity: 1;
-        }
+    &:active {
+        filter: brightness(90%)
     }
 }
 
+@media screen and (min-width: 696px) {
+    .day:hover .day-tooltip {
+        display: block;
+        opacity: 1;
+    }
+}
 .day-content {
     z-index: 1;
 }

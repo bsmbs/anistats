@@ -10,11 +10,11 @@ import { FormattedActivity } from '../activity-day';
     trigger(
       'pop', [
         transition(':enter', [
-          style({ opacity: 0 }),
-          animate('200ms ease-out', style({ opacity: 1}))
+          style({ marginBottom: '-50vw', opacity: 0 }),
+          animate('300ms ease', style({ marginBottom: 0, opacity: 1 }))
         ]),
         transition(':leave', [
-          animate('200ms ease-out', style({ opacity: 0 }))
+          animate('200ms ease-in-out', style({ opacity: 0, marginBottom: '-50vw' }))
         ])
       ]
     )
@@ -27,6 +27,11 @@ export class PopupComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  get sdata() {
+    this.data.anime.sort((a, b) => b.eps - a.eps);
+    return this.data;
   }
 
   close(): void {

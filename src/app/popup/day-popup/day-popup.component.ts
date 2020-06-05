@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormattedActivity } from 'src/app/activity-day';
 
 @Component({
@@ -7,12 +7,17 @@ import { FormattedActivity } from 'src/app/activity-day';
   styleUrls: ['./day-popup.component.scss']
 })
 export class DayPopupComponent implements OnInit {
+  @Output() close = new EventEmitter();
+
   @Input() data: FormattedActivity;
 
   constructor() { }
 
   ngOnInit(): void {
-    //this.data.
+  }
+
+  closePopup(): void {
+    this.close.next();
   }
 
 }
