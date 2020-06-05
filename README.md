@@ -8,9 +8,7 @@
 
 ## Screenshots
 
-![Tower of God](https://i.imgur.com/8W2VT31.png)
-
-![Chart](https://i.imgur.com/ILJqg02.png)
+![Mobile view](https://i.imgur.com/GNDFeTF.png)
 
 ## Development
 
