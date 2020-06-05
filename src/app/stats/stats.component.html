@@ -46,19 +46,7 @@
           <div class="summary-key">Average</div>
       </div>
     </div>
-
-    <!-- DAILY CHART -->
-    <div class="overview-chart chart-container">
-      <div class="chart-header">
-        <span class="chart-title">{{ todayDate.formattedWeekday }}, {{ todayDate.formatted }}</span>
-        <span style="flex: 1"></span>
-        <i class="material-icons chart-arrow" [class.inactive]="todayIndex+1 == activities.length"
-          (click)="todayMove(1)">keyboard_arrow_left</i>
-        <i class="material-icons chart-arrow" [class.inactive]="todayIndex == 0"
-          (click)="todayMove(-1)">keyboard_arrow_right</i>
-      </div>
-      <app-chart [data]="today"></app-chart>
-    </div>
+    
     <footer class="mobile">anistats is not affiliated with AniList. Source on <a
         href="https://github.com/pizza61/anistats">GitHub</a></footer>
   </div>

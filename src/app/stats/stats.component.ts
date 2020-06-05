@@ -16,7 +16,6 @@ import { PopupComponent } from '../popup/popup.component';
 export class StatsComponent implements OnInit {
   @ViewChild('popup') popup: PopupComponent;
 
-  todayIndex: number = 0;
   activities: FormattedActivity[];
 
   updating: Subject<number> = new Subject();
@@ -63,24 +62,6 @@ export class StatsComponent implements OnInit {
     }
   }
 
-  get today() {
-    return this.activities[this.todayIndex].anime.map(x => ({
-      ...x,
-      topText: x.title,
-      bottomImage: true,
-      bottomText: x.image
-    })).sort((a, b) => a.eps - b.eps);
-  }
-
-  get todayDate() {
-    const ob = this.activities[this.todayIndex];
-    return {
-      day: ob.day,
-      formatted: ob.topText,
-      formattedWeekday: ob.bottomText
-    };
-  }
-
   get todayEpisodes() {
     const now = new Date();
     const acdNow = activityDateFromDate(now);
@@ -110,11 +91,6 @@ export class StatsComponent implements OnInit {
 
     const diff = Math.ceil(Math.abs(last - now.getTime()) / (1000 * 60 * 60 * 24)) + 1;
     return (sum / diff).toFixed(2);
-  }
-
-  todayMove(pos) {
-    if (this.todayIndex + pos < 0 || this.todayIndex + pos >= this.activities.length) return;
-    this.todayIndex += pos;
   }
 
   async loadEarlier() {
