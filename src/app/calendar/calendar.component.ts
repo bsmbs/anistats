@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, OnChanges, Output } from '@angular/core';
-import { FormattedActivity, ActivityDate } from '../activity-day';
+import { FormattedActivity } from '../activity-day';
 import { Subject } from 'rxjs';
 import { StatsService } from '../stats/stats.service';
 
@@ -13,6 +13,8 @@ export class CalendarComponent implements OnInit, OnChanges {
   @Input() update?: Subject<number>;
   @Output() events = new EventEmitter<FormattedActivity|number>()
   
+  initialX: number;
+
   monthDays: number = 0;
   firstWeekday: number = 0;
   lastDay: number = 0;
@@ -131,4 +133,19 @@ export class CalendarComponent implements OnInit, OnChanges {
     }
   }
 
+  // Swipe methods
+  swipeStart(e: TouchEvent) {
+    this.initialX = e.touches[0].clientX;
+  }
+
+  swipeEnd(e: TouchEvent) {
+    const currentX = e.changedTouches[0].clientX;
+    const diff = this.initialX - currentX;
+
+    if(diff > 70) { // Swiped left, month forward
+      this.events.emit(2);
+    } else if (diff < -70) { // Swiped right, month back
+      this.events.emit(1);
+    }
+  }
 }

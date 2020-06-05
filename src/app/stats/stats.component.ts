@@ -55,9 +55,18 @@ export class StatsComponent implements OnInit {
 
   handleCalendar(event: FormattedActivity | number) {
     if(typeof event == 'number') {
-      this.loadEarlier();
+      switch(event) {
+        case 0: // load more
+          this.loadEarlier();
+          break;
+        case 1: // month --
+          this.calendarBack();
+          break;
+        case 2: // month ++
+          this.calendarForward();
+          break;
+      }
     } else {
-      console.dir(event)
       this.popup.openDay(event);
     }
   }

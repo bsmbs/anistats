@@ -8,7 +8,7 @@
         <div class="weekday">Sat</div>
         <div class="weekday">Sun</div>
     </div>
-    <div class="days">
+    <div class="days" (touchstart)="swipeStart($event)" (touchend)="swipeEnd($event)">
         <div class="day" 
         *ngFor="let day of days" 
         [style]="(day.day == 1) ? { gridColumn: firstWeekday } : {}"
