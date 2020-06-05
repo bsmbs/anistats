@@ -7,10 +7,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "buildPages": "ng build --prod --output-path docs --base-href https://pizza61.github.io/anistats/ && cp docs/index.html docs/404.html",
+    "build:pages": "ng build --prod --output-path docs --base-href https://pizza61.github.io/anistats/ && cp docs/index.html docs/404.html",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
