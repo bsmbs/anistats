@@ -13,7 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [MonthPipe]
 })
 export class SeriesComponent implements OnInit {
-  search: string = '';
+  list: Media[];
+
   hidden: boolean = false;
   mobile: boolean = false;
   loading: boolean = false;
@@ -34,8 +35,8 @@ export class SeriesComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
 
-  ngOnInit(): void {
-    if (typeof this.seriesService.list == 'undefined') this.seriesService.getList();
+  async ngOnInit() {
+    if (typeof this.seriesService.list == 'undefined') await this.seriesService.getList();
     this.route.params.subscribe(params => {
       window.scrollTo(0, 0);
       if (params.seriesId.length > 0) {
@@ -44,6 +45,8 @@ export class SeriesComponent implements OnInit {
       }
     });
 
+    this.list = this.seriesService.list;
+
     this.breakpointObserver
     .observe(['(min-width: 1024px)'])
     .subscribe((state: BreakpointState) => {
@@ -51,8 +54,8 @@ export class SeriesComponent implements OnInit {
     });
   }
 
-  get list(): Media[] {
-    return this.seriesService.list.filter(item => item.title.romaji.toLowerCase().indexOf(this.search.toLowerCase()) > -1);
+  onSearch(e) {
+    this.list = this.seriesService.list.filter(item => item.title.romaji.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1);
   }
 
   go(id: number) {

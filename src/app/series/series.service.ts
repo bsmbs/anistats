@@ -20,13 +20,15 @@ export class SeriesService {
 
   constructor(private user: UserService) { }
 
-  getList() {
-    this.fetchList()
+  async getList() {
+    await this.fetchList()
     .then(r => {
       const formatted = [].concat.apply([], r.map(x => (x.isCustomList ? [] : x.entries)));
 
       this.list = formatted.map(x => x.media);
       this.list.sort((a, b) => a.title.romaji.localeCompare(b.title.romaji));
+
+      return this.list;
     });
   }
 
