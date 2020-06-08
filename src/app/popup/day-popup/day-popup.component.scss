@@ -1,6 +1,6 @@
 .popup {
     background: #252933;
-    padding-bottom: 2px;
+    padding-bottom: 3px;
     border-radius: 6px;
 
     width: 696px;
@@ -8,7 +8,8 @@
 
 @media screen and (max-width: 696px) {
     .popup {
-        width: 100vw;
+        width: 95vw;
+        margin-bottom: 10px;
     }
 }
 
