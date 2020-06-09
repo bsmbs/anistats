@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StatsService } from './stats.service';
-import { UserService } from '../user/user.service';
-import { MonthPipe } from '../month.pipe';
 import { Subject } from 'rxjs';
-import { activityDateFromDate, ActivityDay, FormattedActivity, ActivityDate } from '../activity-day';
+
+import { activityDateFromDate, ActivityDay, FormattedActivity } from '../../activity-day';
+import { StatsService } from '../../services/stats.service';
+import { UserService } from '../../services/user.service';
+
+import { MonthPipe } from '../../pipes/month.pipe';
 import { PopupComponent } from '../popup/popup.component';
 
 @Component({

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { SeriesService, Media } from './series.service';
-import { StatsService } from '../stats/stats.service';
-import { ActivityDay, activityDateFromDate, stringFromActivityDate, stringFromDate } from '../activity-day';
-import { MonthPipe } from '../month.pipe';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { ActivityDay, stringFromDate } from '../../activity-day';
+import { MonthPipe } from '../../pipes/month.pipe';
+
+import { SeriesService, Media } from '../../services/series.service';
+import { StatsService } from '../../services/stats.service';
 
 @Component({
   selector: 'app-series',

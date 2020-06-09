@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
 import { Router } from '@angular/router';
-import { UserService } from '../user/user.service';
 import { trigger, style, state, transition, animate } from '@angular/animations';
+
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-main',

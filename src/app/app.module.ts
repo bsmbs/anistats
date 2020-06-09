@@ -5,17 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
-import { StatsComponent } from './stats/stats.component';
-import { MonthPipe } from './month.pipe';
-import { ChartComponent } from './chart/chart.component';
-import { UserComponent } from './user/user.component';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { SeriesComponent } from './series/series.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { ItemComponent } from './list/item/item.component';
-import { DayPopupComponent } from './popup/day-popup/day-popup.component';
-import { PopupComponent } from './popup/popup.component';
+import { MainComponent } from './components/main/main.component';
+import { StatsComponent } from './components/stats/stats.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { UserComponent } from './components/user/user.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SeriesComponent } from './components/series/series.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ItemComponent } from './components/list/item/item.component';
+import { DayPopupComponent } from './components/popup/day-popup/day-popup.component';
+import { PopupComponent } from './components/popup/popup.component';
+
+import { MonthPipe } from './pipes/month.pipe';
 
 @NgModule({
   declarations: [

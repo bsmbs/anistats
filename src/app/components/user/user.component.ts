@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { StatsService } from '../stats/stats.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-
-import { UserService } from './user.service';
 import { Subscription } from 'rxjs';
-import { SeriesService } from '../series/series.service';
+
+import { StatsService } from '../../services/stats.service';
+import { UserService } from '../../services/user.service';
+import { SeriesService } from '../../services/series.service';
 
 @Component({
   selector: 'app-user',

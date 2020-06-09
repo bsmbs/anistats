@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, OnChanges, ViewChild, ElementRef } from '@angular/core';
-import { Subject } from 'rxjs';
-import { FormattedActivity } from '../activity-day';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Subject } from 'rxjs';
+
+import { FormattedActivity } from '../../activity-day';
 
 @Component({
   selector: 'app-chart',

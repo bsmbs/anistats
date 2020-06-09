@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Input, OnChanges, Output } from '@angular/core';
-import { FormattedActivity } from '../activity-day';
 import { Subject } from 'rxjs';
-import { StatsService } from '../stats/stats.service';
+
+import { StatsService } from '../../services/stats.service';
+import { FormattedActivity } from '../../activity-day';
 
 @Component({
   selector: 'app-calendar',

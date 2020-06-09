@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '../user/user.service';
 import axios from 'axios';
+
+import { UserService } from './user.service';
 
 export interface Media {
   id: number,
