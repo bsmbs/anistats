@@ -95,6 +95,10 @@
 
     .selectedM {
         color: #d0dee9;
+
+        .tab-icon {
+            animation: click .75s ease;
+        }
     }
 }
 
@@ -106,4 +110,13 @@
 
 .blue {
     color: #3391c0;
+}
+
+@keyframes click {
+    0% {
+        transform: rotate(0deg) scale(0.8);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
 }
