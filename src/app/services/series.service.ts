@@ -21,6 +21,17 @@ export class SeriesService {
 
   constructor(private user: UserService) { }
 
+  async ensureList(): Promise<Media[]> {
+    if (typeof this.list == 'undefined') { 
+      const list = await this.fetchList();
+      const formatted = [].concat.apply([], list.map(x => (x.isCustomList ? [] : x.entries)));
+
+      this.list = formatted.map(x => x.media).sort((a, b) => a.title.romaji.localeCompare(b.title.romaji));
+    }
+
+    return this.list;
+  }
+
   async getList() {
     await this.fetchList()
     .then(r => {

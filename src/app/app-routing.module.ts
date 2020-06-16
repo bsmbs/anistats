@@ -16,9 +16,7 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       { path: 'overview', component: StatsComponent },
-      { path: 'series', redirectTo: 'series/', pathMatch: 'full' },
-      { path: 'series/:seriesId', component: SeriesComponent },
-
+      { path: 'series', component: SeriesComponent }
     ],
   }
 ];

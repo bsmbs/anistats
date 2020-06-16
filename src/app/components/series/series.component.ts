@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ActivityDay, stringFromDate } from '../../activity-day';
+import { ActivityDay, stringFromDate } from '../../interfaces/activity-day';
 import { MonthPipe } from '../../pipes/month.pipe';
 
 import { SeriesService, Media } from '../../services/series.service';
@@ -38,7 +38,7 @@ export class SeriesComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
 
   async ngOnInit() {
-    if (typeof this.seriesService.list == 'undefined') await this.seriesService.getList();
+    /*if (typeof this.seriesService.list == 'undefined') await this.seriesService.getList();
     this.route.params.subscribe(params => {
       window.scrollTo(0, 0);
       if (params.seriesId.length > 0) {
@@ -53,20 +53,10 @@ export class SeriesComponent implements OnInit {
     .observe(['(min-width: 1024px)'])
     .subscribe((state: BreakpointState) => {
       this.mobile = !state.matches;
-    });
+    });*/
   }
 
-  onSearch(e) {
-    this.list = this.seriesService.list.filter(item => item.title.romaji.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1);
-  }
-
-  go(id: number) {
-    delete this.current;
-    this.loading = true;
-    this.router.navigate(['series', id], { relativeTo: this.route.parent });
-  }
-
-  select(id: number) {
+  /*select(id: number) {
     this.hidden = true;
     this.seriesService.fetchMedia(id)
     .then(r => {
@@ -104,17 +94,15 @@ export class SeriesComponent implements OnInit {
       };
     });
   }
+*/
 
-  switch() {
-    this.hidden = !this.hidden;
-  }
 
-  get chartData() {
+  /*get chartData() {
     return this.current.map(x => ({
       ...x,
       topText: x.day.date + '.' + this.monthPipe.transform(x.day.month) + '.' + x.day.year,
       bottomText: x.day.weekday
     }));
-  }
+  }*/
 
 }

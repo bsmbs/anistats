@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormattedActivity } from 'src/app/activity-day';
+import { FormattedActivity } from 'src/app/interfaces/activity-day';
 
 @Component({
   selector: 'app-day-popup',

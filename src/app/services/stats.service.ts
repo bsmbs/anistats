@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { fetchQuery, ActivityDay, ActivityDate, ActivityMedia } from '../activity-day';
+import { fetchQuery, ActivityDay, ActivityDate, ActivityMedia } from '../interfaces/activity-day';
 
 @Injectable({
   providedIn: 'root'

@@ -31,7 +31,7 @@ import { MonthPipe } from './pipes/month.pipe';
     CalendarComponent,
     ItemComponent,
     DayPopupComponent,
-    PopupComponent
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

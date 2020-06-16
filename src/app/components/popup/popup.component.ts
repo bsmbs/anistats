@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { FormattedActivity } from '../../activity-day';
+import { FormattedActivity } from '../../interfaces/activity-day';
 
 @Component({
   selector: 'app-popup',
