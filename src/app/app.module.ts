@@ -17,6 +17,7 @@ import { DayPopupComponent } from './components/popup/day-popup/day-popup.compon
 import { PopupComponent } from './components/popup/popup.component';
 
 import { MonthPipe } from './pipes/month.pipe';
+import { SeriesItemComponent } from './components/list/series-item/series-item.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MonthPipe } from './pipes/month.pipe';
     ItemComponent,
     DayPopupComponent,
     PopupComponent,
+    SeriesItemComponent,
   ],
   imports: [
     BrowserModule,

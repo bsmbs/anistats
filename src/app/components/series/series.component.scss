@@ -1,1 +1,15 @@
-$sidebarColor: var(--color-bg-darker);
+.container {
+    display: flex;
+    margin: 20px auto;
+    width: 70%;
+}
+
+.list {
+    //background: var(--color-bg-darker);
+    flex-grow: 1;
+}
+
+.filters {
+    margin: 10px;
+    flex: 0 0 30%;
+}

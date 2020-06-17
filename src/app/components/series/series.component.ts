@@ -17,7 +17,7 @@ import { StatsService } from '../../services/stats.service';
 export class SeriesComponent implements OnInit {
   list: Media[];
 
-  hidden: boolean = false;
+  /*hidden: boolean = false;
   mobile: boolean = false;
   loading: boolean = false;
 
@@ -33,11 +33,16 @@ export class SeriesComponent implements OnInit {
     planning?: string,
     diff?: number,
     avg?: number,
-  }
+  }*/
 
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
 
   async ngOnInit() {
+    this.seriesService.ensureList()
+    .then(list => {
+      console.dir(list);
+      this.list = list;
+    })
     /*if (typeof this.seriesService.list == 'undefined') await this.seriesService.getList();
     this.route.params.subscribe(params => {
       window.scrollTo(0, 0);

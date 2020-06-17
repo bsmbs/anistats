@@ -1,3 +1,8 @@
-<div class="ses">
-    series
+<div class="container">
+    <div class="list">
+        <app-series-item *ngFor="let anime of list" [data]="anime"></app-series-item>  
+    </div>
+    <div class="filters">
+        todo filters
+    </div>
 </div>
