@@ -8,6 +8,7 @@ export const listQuery =
           id
           status
           progress
+          createdAt
           startedAt {
             year
             month
@@ -26,6 +27,7 @@ export const listQuery =
             title {
               romaji
             }
+            format
           }
         }
       }

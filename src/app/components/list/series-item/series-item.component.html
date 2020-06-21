@@ -1,6 +1,7 @@
 <div class="series-item">
     <img class="series-image" [src]="data.coverImage.medium">
     <a class="series-title">{{ data.title.romaji }}</a>
-    <span style="flex: 1 1 0"></span>
+    <span class="series-col">{{ data.format | animetype }}</span>
+    <span class="series-col">{{ formattedDate }}</span>
     <i class="material-icons series-icon" [style.background]="resolveColor(data.status)">{{ resolveIcon(data.status) }}</i>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Media } from 'src/app/services/series.service';
+import { stringFromActivityDate } from '../../../interfaces/activity-day';
 
 @Component({
   selector: 'app-series-item',
@@ -8,10 +9,13 @@ import { Media } from 'src/app/services/series.service';
 })
 export class SeriesItemComponent implements OnInit {
   @Input() data: Media;
+  formattedDate: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    if(this.data.added.time == 0) this.formattedDate = 'Unknown';
+    else this.formattedDate = stringFromActivityDate(this.data.added);
   }
 
   resolveColor(status: string) {

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { UserService } from './user.service';
 import { listQuery, mediaQuery } from '../interfaces/queries';
+import { activityDateFromDate, ActivityDate } from '../interfaces/activity-day';
 
 export interface Media {
   id: number,
@@ -12,7 +13,10 @@ export interface Media {
   coverImage: {
     medium: string
   },
-  status: string
+  format: string,
+  status: string,
+  progress: number,
+  added: ActivityDate
 }
 
 @Injectable({
@@ -37,6 +41,7 @@ export class SeriesService {
                     progress: x.progress,
                     started: x.startedAt,
                     completed: x.completedAt,
+                    added: activityDateFromDate(new Date(x.createdAt*1000)),
                     ...x.media
                   })) 
                   .sort((a, b) => a.title.romaji.localeCompare(b.title.romaji)); // Sort alphabetically

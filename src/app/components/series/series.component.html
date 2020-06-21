@@ -1,5 +1,12 @@
 <div class="container">
     <div class="list">
+        <div class="first">
+            <span></span>
+            <span style="text-align: initial;">Title</span>
+            <span>Type</span>
+            <span>Added</span>
+            <span></span>
+        </div>
         <app-series-item *ngFor="let anime of list" [data]="anime"></app-series-item>  
     </div>
     <div class="filters">
