@@ -17,6 +17,14 @@ import { StatsService } from '../../services/stats.service';
 export class SeriesComponent implements OnInit {
   list: Media[];
 
+  sortSettings: {
+    prop: string;
+    descending: boolean; // false: ascending, true: descending
+  } = {
+    prop: 'title',
+    descending: false
+  }
+
   /*hidden: boolean = false;
   mobile: boolean = false;
   loading: boolean = false;
@@ -41,7 +49,7 @@ export class SeriesComponent implements OnInit {
     this.seriesService.ensureList()
     .then(list => {
       console.dir(list);
-      this.list = list;
+      this.list = Object.assign(list);
     })
     /*if (typeof this.seriesService.list == 'undefined') await this.seriesService.getList();
     this.route.params.subscribe(params => {
@@ -59,6 +67,17 @@ export class SeriesComponent implements OnInit {
     .subscribe((state: BreakpointState) => {
       this.mobile = !state.matches;
     });*/
+  }
+
+  sort(prop: string) {
+    if(this.sortSettings.prop == prop) { this.list.reverse(); this.sortSettings.descending = !this.sortSettings.descending; return; /* TODO reverse */ }
+
+    this.sortSettings.prop = prop;
+    this.sortSettings.descending = false;
+
+    if(prop == 'added') this.list.sort((a, b) => a.added.time - b.added.time);
+    else this.list.sort((a, b) => a[prop].localeCompare(b[prop]));
+    //this.list[0]['added'].time
   }
 
   /*select(id: number) {

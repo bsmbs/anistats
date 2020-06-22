@@ -7,9 +7,7 @@ import { activityDateFromDate, ActivityDate } from '../interfaces/activity-day';
 
 export interface Media {
   id: number,
-  title: {
-    romaji: string
-  },
+  title: string,
   coverImage: {
     medium: string
   },
@@ -36,15 +34,16 @@ export class SeriesService {
 
       this.list = formatted
                   .map(x => ({
+                    ...x.media,
                     id: x.id,
+                    title: x.media.title.romaji,
                     status: x.status,
                     progress: x.progress,
                     started: x.startedAt,
                     completed: x.completedAt,
                     added: activityDateFromDate(new Date(x.createdAt*1000)),
-                    ...x.media
                   })) 
-                  .sort((a, b) => a.title.romaji.localeCompare(b.title.romaji)); // Sort alphabetically
+                  .sort((a, b) => a.title.localeCompare(b.title)); // Sort alphabetically
     }
 
     return this.list;

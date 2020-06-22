@@ -2,9 +2,9 @@
     <div class="list">
         <div class="first">
             <span></span>
-            <span style="text-align: initial;">Title</span>
-            <span>Type</span>
-            <span>Added</span>
+            <span (click)="sort('title')" style="justify-content: flex-start;">Title <i *ngIf="sortSettings.prop == 'title'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('format')">Type <i *ngIf="sortSettings.prop == 'format'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('added')">Added <i *ngIf="sortSettings.prop == 'added'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
             <span></span>
         </div>
         <app-series-item *ngFor="let anime of list" [data]="anime"></app-series-item>  
