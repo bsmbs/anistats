@@ -1,0 +1,63 @@
+.filter-header {
+  font-weight: 600;
+  font-size: 1.2em;
+  padding: 10px 16px;
+}
+
+.filter-value {
+  display: flex;
+
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.checkbox-ct {
+  display: flex;
+  padding: 8px;
+  flex-grow: 1;
+  user-select: none;
+
+  cursor: pointer;
+  transition: 200ms;
+
+  &:hover {
+    background: #232731;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.checkbox-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+
+  background: #343946;
+
+  margin-right: 8px;
+}
+
+.checkbox-checked {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 1em;
+  font-weight: 900;
+
+  background: var(--color-bars);
+}
+
+.filter-name {
+  font-weight: 500;
+}

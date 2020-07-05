@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ActivityDay, stringFromDate } from '../../interfaces/activity-day';
 import { MonthPipe } from '../../pipes/month.pipe';
+import { Filter } from '../../interfaces/filters';
 
 import { SeriesService, Media } from '../../services/series.service';
 import { StatsService } from '../../services/stats.service';
@@ -24,6 +24,40 @@ export class SeriesComponent implements OnInit {
     prop: 'title',
     descending: false
   }
+
+  filters: Filter[] = [
+    {
+      name: 'Status',
+      key: 'status',
+      values: [
+        {
+          name: "Watching",
+          key: "CURRENT"
+        },
+        {
+          name: "Rewatching",
+          key: "REPEATING"
+        },
+        {
+          name: "Completed",
+          key: "COMPLETED"
+        },
+        {
+          name: "Planning",
+          key: "PLANNING"
+        },
+        {
+          name: "Dropped",
+          key: "DROPPED"
+        },
+        {
+          name: "Paused",
+          key: "PAUSED"
+        }
+      ],
+      checked: ["COMPLETED"]
+    }
+  ]
 
   /*hidden: boolean = false;
   mobile: boolean = false;
@@ -48,8 +82,8 @@ export class SeriesComponent implements OnInit {
   async ngOnInit() {
     this.seriesService.ensureList()
     .then(list => {
+      this.list = Object.create(list);
       console.dir(list);
-      this.list = Object.assign(list);
     })
     /*if (typeof this.seriesService.list == 'undefined') await this.seriesService.getList();
     this.route.params.subscribe(params => {
@@ -78,6 +112,15 @@ export class SeriesComponent implements OnInit {
     if(prop == 'added') this.list.sort((a, b) => a.added.time - b.added.time);
     else this.list.sort((a, b) => a[prop].localeCompare(b[prop]));
     //this.list[0]['added'].time
+  }
+
+  get filteredList(): Media[] {
+    let filtered = this.list;
+    this.filters.forEach(f => {
+      filtered = filtered.filter(x => f.checked.indexOf(x[f.key]) > -1);
+    })
+
+    return filtered;
   }
 
   /*select(id: number) {
