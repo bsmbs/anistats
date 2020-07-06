@@ -11,7 +11,7 @@
     </div>
     <div class="filters">
         <div class="ct search-ct">
-            <input type="search" class="search" placeholder="Search">
+            <input type="search" class="search" placeholder="Search" [(ngModel)]="val">
         </div>
         <app-filter *ngFor="let filter of filters" [filter]="filter"></app-filter>
     </div>

@@ -16,6 +16,7 @@ import { StatsService } from '../../services/stats.service';
 })
 export class SeriesComponent implements OnInit {
   list: Media[];
+  val: string = '';
 
   sortSettings: {
     prop: string;
@@ -120,7 +121,13 @@ export class SeriesComponent implements OnInit {
       filtered = filtered.filter(x => f.checked.indexOf(x[f.key]) > -1);
     })
 
+    filtered = filtered.filter(item => item.title.toLowerCase().indexOf(this.val.toLowerCase()) > -1);
+
     return filtered;
+  }
+
+  onSearch(e) {
+
   }
 
   /*select(id: number) {
