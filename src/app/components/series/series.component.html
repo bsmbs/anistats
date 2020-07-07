@@ -7,7 +7,7 @@
             <span (click)="sort('added')">Added <i *ngIf="sortSettings.prop == 'added'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
             <span></span>
         </div>
-        <app-series-item *ngFor="let anime of filteredList" [data]="anime"></app-series-item>  
+        <app-series-item *ngFor="let anime of filteredList" [data]="anime" (click)="pop(anime)"></app-series-item>  
     </div>
     <div class="filters">
         <div class="ct search-ct">
@@ -16,3 +16,4 @@
         <app-filter *ngFor="let filter of filters" [filter]="filter"></app-filter>
     </div>
 </div>
+<app-popup #popup></app-popup>

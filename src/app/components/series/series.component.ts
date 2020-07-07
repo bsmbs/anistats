@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -7,6 +7,7 @@ import { Filter } from '../../interfaces/filters';
 
 import { SeriesService, Media } from '../../services/series.service';
 import { StatsService } from '../../services/stats.service';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-series',
@@ -15,6 +16,8 @@ import { StatsService } from '../../services/stats.service';
   providers: [MonthPipe]
 })
 export class SeriesComponent implements OnInit {
+  @ViewChild('popup') popup: PopupComponent;
+
   list: Media[];
   val: string = '';
 
@@ -126,8 +129,8 @@ export class SeriesComponent implements OnInit {
     return filtered;
   }
 
-  onSearch(e) {
-
+  pop(a: Media) {
+    this.popup.openSeries(a);
   }
 
   /*select(id: number) {

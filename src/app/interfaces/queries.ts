@@ -24,6 +24,7 @@ export const listQuery =
             coverImage {
               medium
             }
+            bannerImage
             title {
               romaji
             }

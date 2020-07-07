@@ -11,6 +11,7 @@ export interface Media {
   coverImage: {
     medium: string
   },
+  bannerImage: string,
   format: string,
   status: string,
   progress: number,
@@ -35,7 +36,6 @@ export class SeriesService {
       this.list = formatted
                   .map(x => ({
                     ...x.media,
-                    id: x.id,
                     title: x.media.title.romaji,
                     status: x.status,
                     progress: x.progress,

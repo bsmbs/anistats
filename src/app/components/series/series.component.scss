@@ -1,7 +1,6 @@
 .container {
     display: flex;
     margin: 20px auto;
-    width: 80%;
 }
 
 .list {
@@ -70,5 +69,17 @@
     &::placeholder {
         opacity: 1;
         color: #5c6373;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .container {
+        flex-direction: column-reverse;
     }
 }

@@ -1,0 +1,19 @@
+<div class="popup">
+    <div class="popup-banner">
+        <div class="header-bg" [style.backgroundImage]="'url('+data.bannerImage+')'"></div>
+        <img class="header-image" [src]="data.coverImage.medium">
+        <div class="header-content">
+            <span class="header-title">{{ data.title }}</span>
+            <i class="material-icons header-icon" (click)="closePopup()">close</i>
+        </div>
+    </div>
+    <div class="popup-content" *ngIf="current; else other">
+        <app-chart [data]="current"></app-chart>
+    </div>
+    <ng-template #other>
+        <div class="popup-loading">
+            <i class="material-icons loading-icon">book_online</i>
+            <span class="loading-text">Loading your activity...</span>
+        </div>
+    </ng-template>
+</div>

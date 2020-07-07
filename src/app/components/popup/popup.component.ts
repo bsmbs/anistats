@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FormattedActivity } from '../../interfaces/activity-day';
+import { Media } from 'src/app/services/series.service';
 
 @Component({
   selector: 'app-popup',
@@ -23,6 +24,9 @@ import { FormattedActivity } from '../../interfaces/activity-day';
 export class PopupComponent implements OnInit {
   isOpen: boolean = false;
   data: FormattedActivity;
+  seriesdata: Media;
+
+  mode: number = 0; // 0: day, 1: series
 
   constructor() { }
 
@@ -43,7 +47,14 @@ export class PopupComponent implements OnInit {
   }
 
   openDay(e: FormattedActivity): void {
+    this.mode = 0;
     this.isOpen = true;
     this.data = e;
+  }
+
+  openSeries(e: Media): void {
+    this.mode = 1;
+    this.isOpen = true;
+    this.seriesdata = e;
   }
 }
