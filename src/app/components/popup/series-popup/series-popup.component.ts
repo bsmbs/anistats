@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Media, SeriesService } from 'src/app/services/series.service';
 import { StatsService } from 'src/app/services/stats.service';
-import { ActivityDay } from 'src/app/interfaces/activity-day';
+import { ActivityDay, stringFromActivityDate } from 'src/app/interfaces/activity-day';
 import { MonthPipe } from 'src/app/pipes/month.pipe';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -28,6 +28,10 @@ export class SeriesPopupComponent implements OnInit {
   current: ActivityDay[];
   nodata: boolean = false;
 
+  diff: number;
+  avg: number;
+  added: string;
+
   constructor(private seriesService: SeriesService, private statsService: StatsService, private monthPipe: MonthPipe) { }
 
   ngOnInit(): void {
@@ -45,13 +49,23 @@ export class SeriesPopupComponent implements OnInit {
       this.current = this.statsService.parseActivities(r.Page.activities)
       .map(x => ({
         ...x,
-        topText: x.day.date + '.' + this.monthPipe.transform(x.day.month) + '.' + x.day.year, // TODO: date localization
+        topText: stringFromActivityDate(x.day), // TODO: date localization
         bottomText: x.day.weekday
       })).reverse();
 
+      this.added = (this.data.added.time == 0 ? 'Unknown' : stringFromActivityDate(this.data.added)); // TODO: date localization
+
       if(this.current.length == 0) {
         this.nodata = true;
+        return;
       }
+
+      const first = this.current[this.current.length - 1];
+      const last = this.current[0];
+      this.diff = Math.ceil(Math.abs(last.day.time - first.day.time) / (1000 * 60 * 60 * 24)) + 1;
+      this.avg = +(this.current.map(x => x.eps).reduce((a, b) => a + b) / this.current.length).toFixed(1);
+
+
     })
   }
 }

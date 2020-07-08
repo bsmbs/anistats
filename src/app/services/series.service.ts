@@ -15,7 +15,8 @@ export interface Media {
   format: string,
   status: string,
   progress: number,
-  added: ActivityDate
+  added: ActivityDate,
+  episodes: number
 }
 
 @Injectable({

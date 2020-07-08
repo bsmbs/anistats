@@ -47,9 +47,30 @@
 
 .header-title {
     font-weight: 600;
-    font-size: 1.5em;
-
+    font-size: 1.2em;
+    
     padding: 6px 16px;
+}
+
+.header-link {
+    background: var(--color-bars);
+    opacity: 0.8;
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-right: 6px;
+
+    user-select: none;
+    cursor: pointer;
+    transition: 200ms;
+
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        opacity: 1;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+    }
 }
 
 .header-icon {
@@ -112,7 +133,6 @@
     display: grid;
     grid-template-columns: repeat(4, 25%);
 
-    padding: 10px 0;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -122,6 +142,16 @@
     align-items: center;
 
     flex-direction: column;
+
+    padding: 10px 0;
+
+    cursor: default;
+    transition: 200ms;
+    border-radius: 3px;
+
+    &:hover {
+        background: var(--color-bg-lighter);
+    }
 }
 
 .prop-key {
@@ -137,5 +167,9 @@
 @media screen and (min-width: 696px) {
     .prop-val {
         font-size: 1.3em;
+    }
+
+    .header-title {
+        font-size: 1.5em;
     }
 }

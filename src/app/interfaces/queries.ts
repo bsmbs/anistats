@@ -29,6 +29,7 @@ export const listQuery =
               romaji
             }
             format
+            episodes
           }
         }
       }
