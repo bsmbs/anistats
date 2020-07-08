@@ -21,6 +21,8 @@ export class SeriesComponent implements OnInit {
   list: Media[];
   val: string = '';
 
+  showFilters: boolean = true;
+
   sortSettings: {
     prop: string;
     descending: boolean; // false: ascending, true: descending
@@ -133,6 +135,9 @@ export class SeriesComponent implements OnInit {
     this.popup.openSeries(a);
   }
 
+  switchFilters() {
+    this.showFilters = !this.showFilters;
+  }
   /*select(id: number) {
     this.hidden = true;
     this.seriesService.fetchMedia(id)

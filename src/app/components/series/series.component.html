@@ -10,10 +10,18 @@
         <app-series-item *ngFor="let anime of filteredList" [data]="anime" (click)="pop(anime)"></app-series-item>  
     </div>
     <div class="filters">
-        <div class="ct search-ct">
-            <input type="search" class="search" placeholder="Search" [(ngModel)]="val">
+        <div class="filters-top">
+            <div class="ct search-ct">
+                <input type="search" class="search" placeholder="Search" [(ngModel)]="val">
+            </div>
+            <div class="ct more-ct" (click)="switchFilters()" title="Show/hide filters">
+                <i class="material-icons">more_horiz</i>
+            </div>
         </div>
-        <app-filter *ngFor="let filter of filters" [filter]="filter"></app-filter>
+        
+        <div class="filters-ct" *ngIf="showFilters">
+            <app-filter *ngFor="let filter of filters" [filter]="filter"></app-filter>
+        </div>
     </div>
 </div>
 <app-popup #popup></app-popup>
