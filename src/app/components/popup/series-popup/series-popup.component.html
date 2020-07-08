@@ -7,13 +7,35 @@
             <i class="material-icons header-icon" (click)="closePopup()">close</i>
         </div>
     </div>
-    <div class="popup-content" *ngIf="current; else other">
-        <app-chart [data]="current"></app-chart>
+    <div class="popup-content" *ngIf="current; else other" [@w]>
+        <div class="popup-props">
+            <div class="prop">
+                <div class="prop-val">12</div>
+                <div class="prop-key">Episodes</div>
+            </div>
+            <div class="prop">
+                <div class="prop-val">5</div>
+                <div class="prop-key">Daily average</div>
+            </div>
+            <div class="prop">
+                <div class="prop-val">5</div>
+                <div class="prop-key">Days</div>
+            </div>
+            <div class="prop">
+                <div class="prop-val">25.12.2020</div>
+                <div class="prop-key">Added</div>
+            </div>
+        </div>
+       
+        <div class="popup-loading" *ngIf="nodata">
+            <span class="loading-text">No activity data</span>
+        </div>
+        <app-chart *ngIf="!nodata" [data]="current"></app-chart>
     </div>
     <ng-template #other>
         <div class="popup-loading">
             <i class="material-icons loading-icon">book_online</i>
-            <span class="loading-text">Loading your activity...</span>
+            <span class="loading-text">Loading activity...</span>
         </div>
     </ng-template>
 </div>
