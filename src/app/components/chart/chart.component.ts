@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, ViewChild, ElementRef } from '@ang
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Subject } from 'rxjs';
 
-import { FormattedActivity } from '../../activity-day';
+import { FormattedActivity } from '../../interfaces/activity-day';
 
 @Component({
   selector: 'app-chart',

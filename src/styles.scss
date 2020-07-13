@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600&display=swap');
 
 body {
     font-family: 'Baloo Thambi 2', cursive;
@@ -27,4 +27,10 @@ footer {
     --color-bg-darker: #1f232d;
 
     --color-bars: #1f7dac;
+}
+
+.ct {
+    background: var(--color-bg-darker);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
-import { activityDateFromDate, ActivityDay, FormattedActivity } from '../../activity-day';
+import { activityDateFromDate, ActivityDay, FormattedActivity } from '../../interfaces/activity-day';
 import { StatsService } from '../../services/stats.service';
 import { UserService } from '../../services/user.service';
 

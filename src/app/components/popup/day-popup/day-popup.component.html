@@ -9,5 +9,5 @@
         </div>
         <i class="material-icons header-icon" (click)="closePopup()">close</i>
     </div>
-    <app-item *ngFor="let a of data.anime" [anime]="a"></app-item>
+    <app-item *ngFor="let a of data.anime" [anime]="a" (click)="switch.next(a)"></app-item>
 </div>

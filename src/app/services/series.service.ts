@@ -2,15 +2,22 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 
 import { UserService } from './user.service';
+import { listQuery, mediaQuery } from '../interfaces/queries';
+import { activityDateFromDate, ActivityDate } from '../interfaces/activity-day';
 
 export interface Media {
   id: number,
-  title: {
-    romaji: string
-  },
+  title: string,
   coverImage: {
     medium: string
-  }
+  },
+  bannerImage: string,
+  format: string,
+  status?: string,
+  progress?: number,
+  added?: ActivityDate,
+  episodes?: number
+  eps?: number
 }
 
 @Injectable({
@@ -21,62 +28,30 @@ export class SeriesService {
 
   constructor(private user: UserService) { }
 
-  async getList() {
-    await this.fetchList()
-    .then(r => {
-      const formatted = [].concat.apply([], r.map(x => (x.isCustomList ? [] : x.entries)));
+  async ensureList(): Promise<Media[]> {
+    if (typeof this.list == 'undefined') { 
+      const list = await this.fetchList();
 
-      this.list = formatted.map(x => x.media);
-      this.list.sort((a, b) => a.title.romaji.localeCompare(b.title.romaji));
+      // Merge all lists into one, remove custom lists
+      const formatted = [].concat.apply([], list.map(x => (x.isCustomList ? [] : x.entries)));
 
-      return this.list;
-    });
+      this.list = formatted
+                  .map(x => ({
+                    ...x.media,
+                    title: x.media.title.romaji,
+                    status: x.status,
+                    progress: x.progress,
+                    started: x.startedAt,
+                    completed: x.completedAt,
+                    added: activityDateFromDate(new Date(x.createdAt*1000)),
+                  })) 
+                  .sort((a, b) => a.title.localeCompare(b.title)); // Sort alphabetically
+    }
+
+    return this.list;
   }
 
   async fetchMedia(media: number) {
-    const q = `query($id: Int, $mediaId: Int, $page: Int, $perPage: Int) {
-      Media (id: $mediaId) {
-        id
-        title {
-          romaji
-        }
-        coverImage {
-          large
-        }
-        bannerImage
-        episodes
-      }
-      Page (page: $page, perPage: $perPage) {
-        pageInfo {
-          total
-          currentPage
-          lastPage
-          hasNextPage
-          perPage
-        }
-        activities (sort: ID_DESC, mediaId: $mediaId, userId: $id) {
-          __typename
-          ... on ListActivity {
-            id
-            media {
-              id
-              title {
-                romaji
-              }
-              coverImage {
-                medium
-              }
-            }
-            type
-            createdAt
-            status
-            progress
-          }
-        }
-      }
-    }
-    `;
-
     const vars = {
       id: this.user.userdata.id,
       mediaId: media,
@@ -85,7 +60,7 @@ export class SeriesService {
     };
 
     const resp = await axios.post('https://graphql.anilist.co',
-      { query: q, variables: vars },
+      { query: mediaQuery, variables: vars },
       { headers:
         {
           'Content-Type': 'application/json',
@@ -98,33 +73,13 @@ export class SeriesService {
   }
 
   async fetchList() {
-    const q = `query ($id: Int, $chunk: Int) {
-      MediaListCollection (userId: $id, type: ANIME, chunk: $chunk, status_not_in: [PLANNING]) {
-        lists {
-          name
-          isCustomList
-          entries {
-            id
-            media {
-              id
-              coverImage {
-                medium
-              }
-              title {
-                romaji
-              }
-            }
-          }
-        }
-      }
-    }`;
 
     const vars = {
       id: this.user.userdata.id
     };
 
     const resp = await axios.post('https://graphql.anilist.co',
-      { query: q, variables: vars },
+      { query: listQuery, variables: vars },
       { headers:
         {
           'Content-Type': 'application/json',

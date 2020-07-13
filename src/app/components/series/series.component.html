@@ -1,73 +1,27 @@
-<div class="ses">
-    <div class="sidebar">
-        <div class="search-ct">
-            <div class="expander" (click)="switch()">
-                <i class="material-icons expander-icon" *ngIf="!hidden">expand_less</i>
-                <i class="material-icons expander-icon" *ngIf="hidden">expand_more</i>
-            </div>
-            <input placeholder="Filter by name..." class="side-search" type="search" (focus)="hidden = false" (input)="onSearch($event)">
+<div class="container">
+    <div class="list" *ngIf="list">
+        <div class="first">
+            <span></span>
+            <span (click)="sort('title')" style="justify-content: flex-start;">Title <i *ngIf="sortSettings.prop == 'title'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('format')">Type <i *ngIf="sortSettings.prop == 'format'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('added')">Added <i *ngIf="sortSettings.prop == 'added'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span></span>
         </div>
-        <div *ngIf="!hidden || !mobile">
-            <div class="side-item" *ngFor="let l of list">
-                <img class="side-thumbnail" [src]="l.coverImage.medium" lazy>
-                <span class="side-title" [title]="l.title.romaji" (click)="go(l.id)">{{ l.title.romaji }}</span>
-            </div>
-        </div>
+        <app-series-item *ngFor="let anime of filteredList" [data]="anime" (click)="pop(anime)"></app-series-item>  
     </div>
-    <div class="content" *ngIf="current">
-        <div class="banner">
-            <div class="banner-bg" [style.backgroundImage]="'url('+currentData.banner+')'"></div>
-            <img [src]="currentData.image" class="banner-image">
-            <div class="banner-text">
-                <div class="banner-title">{{currentData.title}}</div>
-                <div class="banner-small">{{ currentData.episodes }} {{ currentData.episodes == 1 ? 'episode' : 'episodes' }}</div>
-                <a [href]="'https://anilist.co/anime/'+currentData.id" target="_blank" class="banner-more">AniList</a>
+    <div class="filters">
+        <div class="filters-top">
+            <div class="ct search-ct">
+                <input type="search" class="search" placeholder="Search" [(ngModel)]="val">
+            </div>
+            <div class="ct more-ct" (click)="switchFilters()" title="Show/hide filters">
+                <i class="material-icons">more_horiz</i>
             </div>
         </div>
-        <div class="stats-grid">
-            <div class="stat">
-                <i class="material-icons stat-icon">play_arrow</i>
-                <div class="stat-content">
-                    <div class="stat-value">{{ currentData.first }}</div>
-                    <div class="stat-key">Began on</div>
-                </div>
-            </div>
-            <div class="stat">
-                <i class="material-icons stat-icon">done</i>
-                <div class="stat-content">
-                    <div class="stat-value">{{ currentData.last }}</div>
-                    <div class="stat-key">Finished</div>
-                </div>
-            </div>
-            <div class="stat" *ngIf="currentData.planning">
-                <i class="material-icons stat-icon">add_comment</i>
-                <div class="stat-content">
-                    <div class="stat-value">{{ currentData.planning }}</div>
-                    <div class="stat-key">Planned since</div>
-                </div>
-            </div>
-            <div class="stat">
-                <i class="material-icons stat-icon">today</i>
-                <div class="stat-content">
-                    <div class="stat-value">{{ currentData.diff }}</div>
-                    <div class="stat-key">Days</div>
-                </div>
-            </div>
-            <div class="stat">
-                <i class="material-icons stat-icon">schedule</i>
-                <div class="stat-content">
-                    <div class="stat-value">{{ currentData.avg }}</div>
-                    <div class="stat-key">Daily average</div>
-                </div>
-            </div>
+        
+        <div class="filters-ct" *ngIf="showFilters">
+            <app-filter *ngFor="let filter of filters" [filter]="filter"></app-filter>
         </div>
-        <div class="chart-container">
-            <app-chart [data]="chartData"></app-chart>
-        </div>
-        <span style="flex: 1 1 0;"></span>
-        <footer>anistats is not affiliated with AniList. Source on <a href="https://github.com/pizza61/anistats">GitHub</a></footer>
-    </div>
-    <div class="content content-empty" *ngIf="!current">
-        <app-spinner size="big" *ngIf="loading"></app-spinner>
     </div>
 </div>
+<app-popup #popup></app-popup>

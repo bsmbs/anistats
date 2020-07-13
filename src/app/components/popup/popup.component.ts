@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { FormattedActivity } from '../../activity-day';
+import { FormattedActivity } from '../../interfaces/activity-day';
+import { Media } from 'src/app/services/series.service';
 
 @Component({
   selector: 'app-popup',
@@ -23,6 +24,10 @@ import { FormattedActivity } from '../../activity-day';
 export class PopupComponent implements OnInit {
   isOpen: boolean = false;
   data: FormattedActivity;
+  switched: boolean = false;
+  seriesdata: Media;
+
+  mode: number = 0; // 0: day, 1: series
 
   constructor() { }
 
@@ -30,11 +35,15 @@ export class PopupComponent implements OnInit {
   }
 
   get sdata() {
-    this.data.anime.sort((a, b) => b.eps - a.eps);
     return this.data;
   }
 
   close(): void {
+    if(this.switched) {
+      this.mode = 0;
+      this.switched = false;
+      return;
+    }
     this.isOpen = false;
   }
 
@@ -43,7 +52,19 @@ export class PopupComponent implements OnInit {
   }
 
   openDay(e: FormattedActivity): void {
+    this.mode = 0;
     this.isOpen = true;
     this.data = e;
+  }
+
+  openSeries(e: Media): void {
+    this.mode = 1;
+    this.isOpen = true;
+    this.seriesdata = e;
+  }
+
+  switch(e: Media): void {
+    this.switched = true;
+    this.openSeries(e);
   }
 }

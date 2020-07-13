@@ -73,7 +73,7 @@
         </div>
       </div>
       
-      <app-item *ngFor="let anime of day.anime" [anime]="anime"></app-item>
+      <app-item *ngFor="let anime of day.anime" [anime]="anime" (click)="popup.openSeries(anime)"></app-item>
     
     </div>
     <div class="list-load" *ngIf="statsService.nextPage" (click)="loadEarlier()">Load more</div>

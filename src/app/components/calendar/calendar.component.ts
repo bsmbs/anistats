@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Input, OnChanges, Output } from '@angu
 import { Subject } from 'rxjs';
 
 import { StatsService } from '../../services/stats.service';
-import { FormattedActivity } from '../../activity-day';
+import { FormattedActivity } from '../../interfaces/activity-day';
 
 @Component({
   selector: 'app-calendar',
@@ -40,7 +40,6 @@ export class CalendarComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     if(changes["data"] && this.data) {
         this.loadMonth(this.currentMonth, this.currentYear);
-        console.dir(this.data)
     }
 
     if(changes["update"] && this.update) {
