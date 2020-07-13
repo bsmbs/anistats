@@ -4,14 +4,14 @@
   align-items: center;
   background: #252933;
 
-  transition: .1s;
+  transition: .2s;
   cursor: pointer;
   
   border-left: 2px solid transparent;
 
   &:hover {
     border-left-color: var(--color-bars);
-    background: #133e53;
+    background: #223f4e;
   }
 
   &:active {
