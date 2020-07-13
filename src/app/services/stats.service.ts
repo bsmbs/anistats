@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { fetchQuery, ActivityDay, ActivityDate, ActivityMedia } from '../interfaces/activity-day';
+import { Media } from './series.service';
 
 @Injectable({
   providedIn: 'root'
@@ -64,10 +65,9 @@ export class StatsService {
           return;
       }
 
-      const media: ActivityMedia = {
-        id: activity.media.id,
+      const media: Media = {
+        ...activity.media,
         title: activity.media.title.romaji,
-        image: activity.media.coverImage.medium,
         eps
       };
 

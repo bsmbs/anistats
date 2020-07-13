@@ -13,10 +13,11 @@ export interface Media {
   },
   bannerImage: string,
   format: string,
-  status: string,
-  progress: number,
-  added: ActivityDate,
-  episodes: number
+  status?: string,
+  progress?: number,
+  added?: ActivityDate,
+  episodes?: number
+  eps?: number
 }
 
 @Injectable({

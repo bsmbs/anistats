@@ -1,7 +1,9 @@
+import { Media } from '../services/series.service';
+
 export interface ActivityDay {
     day: ActivityDate,
     eps: number,
-    anime?: ActivityMedia[]
+    anime?: Media[]
 }
 
 export interface ActivityDate {
@@ -16,7 +18,7 @@ export interface ActivityMedia {
     id: number,
     title: string,
     image: string,
-    eps: number,
+    episodes: number,
     planning?: ActivityDate
 }
 
@@ -48,6 +50,9 @@ export const fetchQuery = `
               coverImage {
                 medium
               }
+              bannerImage
+              format
+              episodes
             }
             type
             createdAt

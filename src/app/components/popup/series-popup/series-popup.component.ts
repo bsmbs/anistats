@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Media, SeriesService } from 'src/app/services/series.service';
 import { StatsService } from 'src/app/services/stats.service';
-import { ActivityDay, stringFromActivityDate } from 'src/app/interfaces/activity-day';
+import { ActivityDay, stringFromActivityDate, stringFromDate } from 'src/app/interfaces/activity-day';
 import { MonthPipe } from 'src/app/pipes/month.pipe';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -53,7 +53,12 @@ export class SeriesPopupComponent implements OnInit {
         bottomText: x.day.weekday
       })).reverse();
 
-      this.added = (this.data.added.time == 0 ? 'Unknown' : stringFromActivityDate(this.data.added)); // TODO: date localization
+      if(typeof this.data.added == 'undefined') {
+        let plan = r.Page.activities.find(act => act.status == 'plans to watch');
+        this.added = (plan ? stringFromDate(new Date(plan.createdAt * 1000)) : 'Unknown')
+      } else {
+        this.added = (this.data.added.time == 0 ? 'Unknown' : stringFromActivityDate(this.data.added)); // TODO: date localization
+      }
 
       if(this.current.length == 0) {
         this.nodata = true;

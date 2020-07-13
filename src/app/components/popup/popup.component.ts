@@ -24,6 +24,7 @@ import { Media } from 'src/app/services/series.service';
 export class PopupComponent implements OnInit {
   isOpen: boolean = false;
   data: FormattedActivity;
+  switched: boolean = false;
   seriesdata: Media;
 
   mode: number = 0; // 0: day, 1: series
@@ -34,11 +35,15 @@ export class PopupComponent implements OnInit {
   }
 
   get sdata() {
-    this.data.anime.sort((a, b) => b.eps - a.eps);
     return this.data;
   }
 
   close(): void {
+    if(this.switched) {
+      this.mode = 0;
+      this.switched = false;
+      return;
+    }
     this.isOpen = false;
   }
 
@@ -56,5 +61,10 @@ export class PopupComponent implements OnInit {
     this.mode = 1;
     this.isOpen = true;
     this.seriesdata = e;
+  }
+
+  switch(e: Media): void {
+    this.switched = true;
+    this.openSeries(e);
   }
 }

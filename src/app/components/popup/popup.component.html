@@ -1,4 +1,7 @@
 <div class="container" (click)="close()" *ngIf="isOpen" [@pop]>
-    <app-day-popup *ngIf="mode == 0" (click)="$event.stopPropagation()" (close)="close()" [data]="sdata"></app-day-popup>
-    <app-series-popup *ngIf="mode == 1" (click)="$event.stopPropagation()" (close)="close()" [data]="seriesdata"></app-series-popup>
+    <div (click)="$event.stopPropagation()">
+        <app-day-popup *ngIf="mode == 0" (close)="close()" (switch)="switch($event)" [data]="sdata"></app-day-popup>
+        <app-series-popup *ngIf="mode == 1" (close)="close()" [data]="seriesdata"></app-series-popup>
+    </div>
+    
 </div>
