@@ -40,7 +40,6 @@ export class CalendarComponent implements OnInit, OnChanges {
   ngOnChanges(changes) {
     if(changes["data"] && this.data) {
         this.loadMonth(this.currentMonth, this.currentYear);
-        console.dir(this.data)
     }
 
     if(changes["update"] && this.update) {

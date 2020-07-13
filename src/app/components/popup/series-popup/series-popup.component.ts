@@ -35,7 +35,6 @@ export class SeriesPopupComponent implements OnInit {
   constructor(private seriesService: SeriesService, private statsService: StatsService, private monthPipe: MonthPipe) { }
 
   ngOnInit(): void {
-    console.log("a");
     this.load(this.data.id);
   }
 
