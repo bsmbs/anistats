@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="list" *ngIf="list">
+    <div class="list">
         <div class="first">
             <span></span>
             <span (click)="sort('title')" style="justify-content: flex-start;">Title <i *ngIf="sortSettings.prop == 'title'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
@@ -7,7 +7,9 @@
             <span (click)="sort('added')">Added <i *ngIf="sortSettings.prop == 'added'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
             <span></span>
         </div>
-        <app-series-item *ngFor="let anime of filteredList" [data]="anime" (click)="pop(anime)"></app-series-item>  
+        <div *ngIf="list">
+            <app-series-item *ngFor="let anime of filteredList" [data]="anime" (click)="pop(anime)"></app-series-item>
+        </div>
     </div>
     <div class="filters">
         <div class="filters-top">

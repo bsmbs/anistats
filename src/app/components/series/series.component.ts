@@ -81,7 +81,10 @@ export class SeriesComponent implements OnInit {
     this.sortSettings.descending = false;
 
     if(prop == 'added') this.list.sort((a, b) => a.added.time - b.added.time);
-    else this.list.sort((a, b) => a[prop].localeCompare(b[prop]));
+    else this.list.sort((a, b) => {
+      if(typeof a[prop] != 'string' || typeof b[prop] != 'string') return -1;
+      return a[prop].localeCompare(b[prop]);
+    });
 
   }
 
