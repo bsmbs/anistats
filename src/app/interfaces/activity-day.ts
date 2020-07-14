@@ -44,6 +44,7 @@ export const fetchQuery = `
             id
             media {
               id
+              type
               title {
                 romaji
               }

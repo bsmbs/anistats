@@ -13,6 +13,7 @@ export interface Media {
   },
   bannerImage: string,
   format: string,
+  type?: string,
   status?: string,
   progress?: number,
   added?: ActivityDate,

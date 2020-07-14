@@ -29,6 +29,7 @@ export class StatsService {
     const days: ActivityDay[] = [];
 
     activities.forEach(activity => {
+      if(activity.media.type == "MANGA") return;
       const timestamp = new Date(activity.createdAt * 1000);
 
       if(timestamp.getHours() < 3) { // Count late night as previous day
