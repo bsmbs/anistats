@@ -8,6 +8,7 @@ import { UserService } from '../../services/user.service';
 
 import { MonthPipe } from '../../pipes/month.pipe';
 import { PopupComponent } from '../popup/popup.component';
+import { LocaleService } from 'src/app/services/locale.service';
 
 @Component({
   selector: 'app-stats',
@@ -24,7 +25,7 @@ export class StatsComponent implements OnInit {
 
   loading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private router: Router, private user: UserService, public statsService: StatsService, private monthPipe: MonthPipe) {
+  constructor(private route: ActivatedRoute, private router: Router, private user: UserService, public statsService: StatsService, private monthPipe: MonthPipe, public locale: LocaleService) {
     if (!this.statsService.prefetchedActivities) { // first time
       this.statsService.fetchActivity(1)
         .then(async resp => {
@@ -50,7 +51,7 @@ export class StatsComponent implements OnInit {
   formatActivities(a: ActivityDay[]): FormattedActivity[] {
     return a.map(x => ({
       ...x,
-      topText: x.day.date + '.' + this.monthPipe.transform(x.day.month) + '.' + x.day.year,
+      topText: this.locale.formatActivityDate(x.day),
       bottomText: x.day.weekday
     }));
   }

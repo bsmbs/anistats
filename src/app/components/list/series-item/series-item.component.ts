@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Media } from 'src/app/services/series.service';
-import { stringFromActivityDate } from '../../../interfaces/activity-day';
+import { LocaleService } from 'src/app/services/locale.service';
 
 @Component({
   selector: 'app-series-item',
@@ -11,11 +11,11 @@ export class SeriesItemComponent implements OnInit {
   @Input() data: Media;
   formattedDate: string;
 
-  constructor() { }
+  constructor(public locale: LocaleService) { }
 
   ngOnInit(): void {
     if(this.data.added.time == 0) this.formattedDate = 'Unknown';
-    else this.formattedDate = stringFromActivityDate(this.data.added);
+    else this.formattedDate = this.locale.formatActivityDate(this.data.added);
   }
 
   resolveColor(status: string) {

@@ -60,7 +60,7 @@
       <div class="list-header">
         <div class="list-header-title">
           <span class="list-header-title-weekday">{{day.day.weekday}},</span>
-          <span class="list-header-title-date">{{ day.day.date }}.{{ day.day.month | month }}.{{ day.day.year }}</span>
+          <span class="list-header-title-date">{{ locale.formatActivityDate(day.day) }}</span>
         </div>
         <span style="flex: 1"></span>
         <div class="list-header-prop">

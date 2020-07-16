@@ -75,7 +75,7 @@ export class SeriesComponent implements OnInit {
   }
 
   sort(prop: string) {
-    if(this.sortSettings.prop == prop) { this.list.reverse(); this.sortSettings.descending = !this.sortSettings.descending; return; /* TODO reverse */ }
+    if(this.sortSettings.prop == prop) { this.list.reverse(); this.sortSettings.descending = !this.sortSettings.descending; return; }
 
     this.sortSettings.prop = prop;
     this.sortSettings.descending = false;
