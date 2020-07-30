@@ -15,8 +15,6 @@ export class LocaleService {
   localDateFormat() {
     const formatObj = new Intl.DateTimeFormat().formatToParts(new Date());
     
-    console.log("fgen")
-
     return formatObj
       .map(obj => {
         switch (obj.type) {
