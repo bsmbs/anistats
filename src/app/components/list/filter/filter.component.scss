@@ -2,11 +2,32 @@
   font-weight: 600;
   font-size: 1.2em;
   padding: 10px 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .filter-value {
   display: flex;
+}
 
+.filter-name {
+  font-weight: 500;
+}
+
+.filter-icon {
+  padding: 2px;
+  user-select: none;
+  border-radius: 3px;
+
+  cursor: pointer;
+
+  transition: 200ms;
+
+  &:hover {
+    background: var(--color-bg-lighter);
+  }
 }
 
 input[type=checkbox] {
@@ -56,8 +77,4 @@ input[type=checkbox] {
   font-weight: 900;
 
   background: var(--color-bars);
-}
-
-.filter-name {
-  font-weight: 500;
 }
