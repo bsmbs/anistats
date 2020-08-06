@@ -62,6 +62,41 @@ export class SeriesComponent implements OnInit {
         }
       ],
       checked: ["COMPLETED"]
+    },
+    {
+      name: "Type",
+      key: "format",
+      values: [
+        {
+          name: "TV",
+          key: "TV"
+        },
+        {
+          name: "TV Short",
+          key: "TV_SHORT"
+        },
+        {
+          name: "Movie",
+          key: "MOVIE"
+        },
+        {
+          name: "Special",
+          key: "SPECIAL"
+        },
+        {
+          name: "OVA",
+          key: "OVA"
+        },
+        {
+          name: "ONA",
+          key: "ONA"
+        },
+        {
+          name: "Music",
+          key: "MUSIC"
+        }
+      ],
+      checked: ["TV", "TV_SHORT", "MOVIE", "SPECIAL", "OVA", "ONA", "MUSIC"]
     }
   ]
 
