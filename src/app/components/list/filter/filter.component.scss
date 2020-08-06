@@ -17,7 +17,7 @@
 }
 
 .filter-icon {
-  padding: 2px;
+  padding: 2px 6px;
   user-select: none;
   border-radius: 3px;
 
@@ -26,7 +26,7 @@
   transition: 200ms;
 
   &:hover {
-    background: var(--color-bg-lighter);
+    opacity: 0.7;
   }
 }
 
