@@ -1,5 +1,5 @@
 <div class="series-item">
-    <img class="series-image" [src]="data.coverImage.medium">
+    <img class="series-image" [src]="data.coverImage.medium" loading="lazy">
     <a class="series-title">{{ data.title }}</a>
     <span class="series-col">{{ data.format | animetype }}</span>
     <span class="series-col">{{ formattedDate }}</span>
