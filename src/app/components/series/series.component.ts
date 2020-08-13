@@ -33,8 +33,15 @@ export class SeriesComponent implements OnInit {
 
   filters: Filter[] = [
     {
+      name: "Year",
+      key: "seasonYear",
+      type: "RANGE",
+      checked: "any"
+    },
+    {
       name: 'Status',
       key: 'status',
+      type: "INCLUSION",
       values: [
         {
           name: "Watching",
@@ -61,11 +68,12 @@ export class SeriesComponent implements OnInit {
           key: "PAUSED"
         }
       ],
-      checked: ["COMPLETED"]
+      checked: ["COMPLETED", "CURRENT", "REPEATING"]
     },
     {
       name: "Type",
       key: "format",
+      type: "INCLUSION",
       values: [
         {
           name: "TV",
@@ -106,6 +114,7 @@ export class SeriesComponent implements OnInit {
     this.seriesService.ensureList()
     .then(list => {
       this.list = Object.create(list);
+      console.dir(this.list[0])
     })
   }
 
@@ -126,9 +135,18 @@ export class SeriesComponent implements OnInit {
   get filteredList(): Media[] {
     let filtered = this.list;
     this.filters.forEach(f => {
-      filtered = filtered.filter(x => f.checked.indexOf(x[f.key]) > -1);
+      switch(f.type) {
+        case 'INCLUSION':
+          filtered = filtered.filter(x => f.checked.indexOf(x[f.key]) > -1);
+          break;
+        case 'RANGE':
+          if(f.checked == 'any') break;
+          filtered = filtered.filter(x => f.checked == x[f.key])
+          break;
+      }
     })
 
+    // Search
     filtered = filtered.filter(item => item.title.toLowerCase().indexOf(this.val.toLowerCase()) > -1);
 
     return filtered;

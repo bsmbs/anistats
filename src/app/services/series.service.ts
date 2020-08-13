@@ -13,6 +13,7 @@ export interface Media {
   },
   bannerImage: string,
   format: string,
+  seasonYear? : number,
   type?: string,
   status?: string,
   progress?: number,

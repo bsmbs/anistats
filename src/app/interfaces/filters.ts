@@ -1,8 +1,9 @@
 export interface Filter {
     name: string,
     key: string,
-    values: FilterValues[],
-    checked: string[]
+    type: string,
+    values?: FilterValues[],
+    checked: string[] | string
 }
 
 export interface FilterValues {

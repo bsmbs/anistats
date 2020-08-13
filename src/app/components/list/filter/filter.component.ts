@@ -22,11 +22,12 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class FilterComponent implements OnInit {
   @Input() filter: Filter;
+  currentYear: number;
 
   constructor() { }
 
   ngOnInit(): void {
-    
+    this.currentYear = new Date().getFullYear();
   }
 
   selectAll() {
@@ -38,11 +39,13 @@ export class FilterComponent implements OnInit {
   }
 
   check(key: string) {
-    let i = this.filter.checked.indexOf(key);
-    if (i > -1) { // exists, remove from array
-      this.filter.checked.splice(i, 1);
-    } else { // add
-      this.filter.checked.push(key);
+    if(Array.isArray(this.filter.checked)) {
+      let i = this.filter.checked.indexOf(key);
+      if (i > -1) { // exists, remove from array
+        this.filter.checked.splice(i, 1);
+      } else { // add
+        this.filter.checked.push(key);
+      }
     }
   }
 

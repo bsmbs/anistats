@@ -74,3 +74,44 @@ input[type=checkbox] {
 
   background: var(--color-bars);
 }
+
+// RANGE
+$rangeHeight: 6px;
+
+.range-container {
+  padding: 0 12px 6px;
+}
+
+.range {
+  appearance: none;
+
+  background: var(--color-bg-lighter);
+  width: 100%;
+  margin: 0;
+
+  height: $rangeHeight;
+  border-radius: 3px;
+
+  &::-moz-range-thumb,  &::-webkit-slider-thumb {
+    appearance: none;
+    background: var(--color-bg-darker);
+    border: 2px solid var(--color-bars);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+
+    transition: 200ms;
+
+    &:active {
+      cursor: grabbing;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &::-moz-range-progress, &::-webkit-slider-runnable-track {
+    background: var(--color-bars);
+    height: $rangeHeight;
+    border-radius: 3px;
+  }
+}

@@ -25,6 +25,7 @@ export const listQuery =
               medium
             }
             bannerImage
+            seasonYear
             title {
               romaji
             }
