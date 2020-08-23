@@ -36,6 +36,8 @@ export class SeriesComponent implements OnInit {
       name: "Year",
       key: "seasonYear",
       type: "RANGE",
+      min: 1950,
+      max: new Date().getFullYear(),
       checked: "any"
     },
     {
@@ -69,6 +71,14 @@ export class SeriesComponent implements OnInit {
         }
       ],
       checked: ["COMPLETED", "CURRENT", "REPEATING"]
+    },
+    {
+      name: "Episodes",
+      key: "episodes",
+      type: "RANGE",
+      min: 1,
+      max: 80,
+      checked: "any"
     },
     {
       name: "Type",

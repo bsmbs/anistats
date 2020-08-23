@@ -23,6 +23,6 @@
         <i class="material-icons filter-icon" (click)="filter.checked = 'any'" title="Clear">clear</i>
     </div>
     <div class="range-container">
-        <input class="range" type="range" [(ngModel)]="filter.checked" min="1950" [max]="currentYear">
+        <input class="range" type="range" [(ngModel)]="filter.checked" [min]="filter.min" [max]="filter.max">
     </div>
 </div>
