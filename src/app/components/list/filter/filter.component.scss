@@ -12,14 +12,10 @@
   display: flex;
 }
 
-.filter-name {
-  font-weight: 500;
-}
-
 .filter-icon {
   padding: 2px 6px;
   user-select: none;
-  border-radius: 3px;
+  border-radius: 50%;
 
   cursor: pointer;
 
@@ -51,17 +47,17 @@ input[type=checkbox] {
 .checkbox-icon {
   width: 24px;
   height: 24px;
-  border-radius: 3px;
+  border-radius: 50%;
 
   background: #343946;
 
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 .checkbox-checked {
   width: 24px;
   height: 24px;
-  border-radius: 3px;
+  border-radius: 50%;
 
   display: flex;
   align-items: center;
@@ -70,7 +66,6 @@ input[type=checkbox] {
   color: white;
 
   font-size: 1em;
-  font-weight: 900;
 
   background: var(--color-bars);
 }
