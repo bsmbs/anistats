@@ -53,7 +53,7 @@
 .day-tooltip {
     display: none;
     position: absolute;
-    background: #16181ae5;
+    background: var(--color-bg-tooltip);
     border-radius: 4px;
 
     top: -60px;
@@ -78,7 +78,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #16181ae5 transparent transparent transparent;
+    border-color: var(--color-bg-tooltip) transparent transparent transparent;
 }
 
 .day-bg {

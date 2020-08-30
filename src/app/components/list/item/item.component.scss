@@ -2,7 +2,7 @@
   padding: 10px 5px;
   display: flex;
   align-items: center;
-  background: #252933;
+  background: var(--color-bg-dark);
 
   transition: .2s;
   cursor: pointer;
@@ -11,7 +11,7 @@
 
   &:hover {
     border-left-color: var(--color-bars);
-    background: #223f4e;
+    background: var(--color-hover-bars);
   }
 
   &:active {
@@ -53,6 +53,6 @@
   
   .prop-key {
     text-transform: uppercase;
-    color: #818c95;
+    color: var(--color-gray);
     font-size: 0.76em;
   }

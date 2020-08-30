@@ -57,12 +57,12 @@
 
 .chart-label-top {
   font-weight: 600;
-  color: #c3cfd5;
+  color: var(--color-text-primary);
 }
 
 .chart-label-bottom {
   font-weight: 600;
-  color: #9fa6aa;
+  color: var(--color-text-secondary);
   font-size: .9em;
 }
 
@@ -90,41 +90,6 @@
 [data-tooltip] {
   position: relative;
   cursor: pointer;
-}
-
-/* Hide the tooltip content by default */
-[data-tooltip]:before,
-[data-tooltip]:after {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Position tooltip above the element */
-[data-tooltip]:before {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -80px;
-  margin-bottom: 20px;
-  width: 160px;
-  transition: display 0s, opacity .2s ease-in-out;
-  background: #151f2e;
-  border: 1px solid #273851;
-  color: #fff;
-  content: attr(data-tooltip);
-  text-align: center;
-  padding: 5px;
-  font-size: .9em;
-  box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 6px;
-}
-
-/* Show tooltip content on hover */
-[data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
-  visibility: visible;
-  opacity: 1;
 }
 
 .value {

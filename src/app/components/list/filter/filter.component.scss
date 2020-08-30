@@ -40,7 +40,7 @@ input[type=checkbox] {
   transition: 200ms;
 
   &:hover {
-    background: #232731;
+    background: var(--color-hover-darker);
   }
 }
 
@@ -49,7 +49,7 @@ input[type=checkbox] {
   height: 24px;
   border-radius: 50%;
 
-  background: #343946;
+  background: var(--color-bg-light);
 
   margin-right: 10px;
 }

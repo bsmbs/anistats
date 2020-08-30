@@ -12,7 +12,7 @@
 .mobileNav {
     position: fixed;
     width: 100%;
-    background: #1c1f27;
+    background: var(--color-nav);
     bottom: 0;
     display: flex;
     z-index: 3;
@@ -41,7 +41,7 @@
 .username {
     display: flex;
     align-items: center;
-    background: #1b1e25;
+    background: var(--color-nav-deep);
     padding: 16px 20px;
     transition: 200ms;
 
@@ -65,7 +65,7 @@
         font-weight: 600;
         cursor: pointer;
         outline: none;
-        color: #818c95;
+        color: var(--color-gray);
         transition: 200ms;
     }
 }
@@ -78,7 +78,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: #818b96;
+        color: var(--color-gray);
         outline: none;
 
         transition: color .2s;
@@ -94,7 +94,7 @@
     }
 
     .selectedM {
-        color: #d0dee9;
+        color: var(--color-nav-selected-white);
 
         .tab-icon {
             animation: click .75s ease;
@@ -103,7 +103,7 @@
 }
 
 .selected {
-    color: #5cc1f3;
+    color: var(--color-nav-selected);
     font-weight: 600;
     border-radius: 8px;
 }

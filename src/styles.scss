@@ -23,10 +23,30 @@ footer {
 }
 
 :root {
+    --color-bg-light: #343946;
     --color-bg-lighter: #2d313d;
+    --color-bg-dark: #252933;
     --color-bg-darker: #1f232d;
+    --color-bg-tooltip: #16181ae5;
+
+    --color-hover-darker: #232731;
+    --color-hover-bars: #223f4e;
+    --color-hover-input: #1e6385;
 
     --color-bars: #1f7dac;
+    --color-gray: #818c95;
+
+    --color-text-input: #cedfeb;
+    --color-text-primary: #c3cfd5;
+    --color-text-secondary: #9fa6aa;
+    --color-text-placeholder: #5c6373;
+
+    --color-spacer: #4c5162;
+
+    --color-nav: #1c1f27;
+    --color-nav-deep: #1b1e25;
+    --color-nav-selected: #5cc1f3;
+    --color-nav-selected-white: #d0dee9;
 }
 
 .ct {

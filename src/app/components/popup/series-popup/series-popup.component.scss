@@ -1,5 +1,5 @@
 .popup {
-    background: #252933;
+    background: var(--color-bg-dark);
     border-radius: 6px;
     box-shadow: 0 0 10px #252933b0;
 
@@ -155,7 +155,7 @@
 }
 
 .prop-key {
-    color: #818c95;
+    color: var(--color-gray);
     font-size: 0.76em;
     text-transform: uppercase;
 }

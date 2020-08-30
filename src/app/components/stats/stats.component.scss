@@ -16,7 +16,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #363e4d;
   z-index: 2;
   opacity: 0.2;
 }
@@ -148,7 +147,7 @@
 }
 
 .list {
-  border-bottom: 2px solid #4c5162;
+  border-bottom: 2px solid var(--color-spacer);
 }
 
 .list-header {
@@ -181,7 +180,7 @@
 
 .prop-key {
   text-transform: uppercase;
-  color: #818c95;
+  color: var(--color-gray);
   font-size: 0.76em;
 }
 
@@ -216,7 +215,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #424a5e;
+  border-right: 1px solid var(--color-spacer);
 
   &:last-child {
     border: none;
