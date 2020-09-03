@@ -6,7 +6,7 @@
             <span class="header-title">{{ data.title }}</span>
             <span style="flex: 1 1 0;"></span>
             <a [href]="'https://anilist.co/anime/'+data.id" target="_blank" class="header-link">AniList</a>
-            <i class="material-icons header-icon" (click)="closePopup()">close</i>
+            <i class="material-icons-round header-icon" (click)="closePopup()">close</i>
         </div>
     </div>
     <div class="popup-content" *ngIf="current; else other" [@w]>
@@ -36,7 +36,7 @@
     </div>
     <ng-template #other>
         <div class="popup-loading">
-            <i class="material-icons loading-icon">book_online</i>
+            <i class="material-icons-round loading-icon">book_online</i>
             <span class="loading-text">Loading activity...</span>
         </div>
     </ng-template>

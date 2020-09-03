@@ -58,7 +58,7 @@ export const mediaQuery =
         hasNextPage
         perPage
       }
-      activities (sort: ID_DESC, mediaId: $mediaId, userId: $id) {
+      activities (sort: ID_DESC, mediaId: $mediaId, userId: $id, type: ANIME_LIST) {
         __typename
         ... on ListActivity {
           id

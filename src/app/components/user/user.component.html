@@ -14,14 +14,24 @@
     <div class="tab" [class.selected]="name == 'overview'" [routerLink]="['overview']">Overview</div>
     <div class="tab" [class.selected]="name == 'series'" [routerLink]="['series']">List statistics</div>
 </nav>
+
 <router-outlet *ngIf="user.userdata"></router-outlet>
+
 <nav class="mobileNav" *ngIf="mobile">
     <div class="tab" [class.selectedM]="name == 'overview'" [routerLink]="['overview']">
-        <i class="material-icons tab-icon">account_circle</i>
+        <i class="material-icons-round tab-icon">account_circle</i>
         <span class="tab-text">Overview</span>
     </div>
     <div class="tab" [class.selectedM]="name == 'series'" [routerLink]="['series']">
-        <i class="material-icons tab-icon">dashboard</i>
+        <i class="material-icons-round tab-icon">dashboard</i>
+        <span class="tab-text">List statistics</span>
+    </div>
+    <div class="tab" [class.selectedM]="name == 'series'" [routerLink]="['series']">
+        <i class="material-icons-round tab-icon">dashboard</i>
+        <span class="tab-text">List statistics</span>
+    </div>
+    <div class="tab" [class.selectedM]="name == 'series'" [routerLink]="['series']">
+        <i class="material-icons-round tab-icon">dashboard</i>
         <span class="tab-text">List statistics</span>
     </div>
 </nav>

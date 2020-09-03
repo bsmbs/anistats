@@ -2,9 +2,9 @@
     <div class="list">
         <div class="first">
             <span></span>
-            <span (click)="sort('title')" style="justify-content: flex-start;">Title <i *ngIf="sortSettings.prop == 'title'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
-            <span (click)="sort('format')">Type <i *ngIf="sortSettings.prop == 'format'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
-            <span (click)="sort('added')">Added <i *ngIf="sortSettings.prop == 'added'" class="material-icons">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('title')" style="justify-content: flex-start;">Title <i *ngIf="sortSettings.prop == 'title'" class="material-icons-round">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('format')">Type <i *ngIf="sortSettings.prop == 'format'" class="material-icons-round">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('added')">Added <i *ngIf="sortSettings.prop == 'added'" class="material-icons-round">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
             <span></span>
         </div>
         <div *ngIf="list">
@@ -17,7 +17,7 @@
                 <input type="search" class="search" placeholder="Search" [(ngModel)]="val">
             </div>
             <div class="ct more-ct" (click)="switchFilters()" title="Show/hide filters">
-                <i class="material-icons">more_horiz</i>
+                <i class="material-icons-round">more_horiz</i>
             </div>
         </div>
         

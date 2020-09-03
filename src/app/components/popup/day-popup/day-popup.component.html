@@ -7,7 +7,7 @@
             <span class="prop-value">{{ data.eps }}</span>
             <span class="prop-key">episodes</span>
         </div>
-        <i class="material-icons header-icon" (click)="closePopup()">close</i>
+        <i class="material-icons-round header-icon" (click)="closePopup()">close</i>
     </div>
     <app-item *ngFor="let a of data.anime" [anime]="a" (click)="switch.next(a)"></app-item>
 </div>

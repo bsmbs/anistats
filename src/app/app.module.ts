@@ -21,6 +21,7 @@ import { SeriesItemComponent } from './components/list/series-item/series-item.c
 import { AnimetypePipe } from './pipes/animetype.pipe';
 import { FilterComponent } from './components/list/filter/filter.component';
 import { SeriesPopupComponent } from './components/popup/series-popup/series-popup.component';
+import { SeriesContainerComponent } from './components/series-container/series-container.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SeriesPopupComponent } from './components/popup/series-popup/series-pop
     AnimetypePipe,
     FilterComponent,
     SeriesPopupComponent,
+    SeriesContainerComponent,
   ],
   imports: [
     BrowserModule,

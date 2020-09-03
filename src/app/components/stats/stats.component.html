@@ -12,8 +12,8 @@
         <span class="chart-title">Activity</span>
         <span style="flex: 1"></span>
         <span class="chart-subtitle">{{ statsService.calendarDisplay.month }} {{ statsService.calendarDisplay.year }}</span>
-        <i class="material-icons chart-arrow" (click)="calendarBack()">keyboard_arrow_left</i>
-        <i class="material-icons chart-arrow" (click)="calendarForward()">keyboard_arrow_right</i>
+        <i class="material-icons-round chart-arrow" (click)="calendarBack()">keyboard_arrow_left</i>
+        <i class="material-icons-round chart-arrow" (click)="calendarForward()">keyboard_arrow_right</i>
       </div>
       <app-calendar (events)="handleCalendar($event)" [data]="activities" [update]="updating"></app-calendar>
     </div>
@@ -23,7 +23,7 @@
         <span class="chart-title">Episodes</span>
         <span style="flex: 1"></span>
         <div class="range-btn" (click)="loadEarlier()" *ngIf="statsService.nextPage">
-          <i class="material-icons" *ngIf="!statsService.lock">first_page</i>
+          <i class="material-icons-round" *ngIf="!statsService.lock">first_page</i>
           <app-spinner class="range-spinner" size="small" *ngIf="statsService.lock"></app-spinner>
           <span class="range-btn-text">Load more</span>
         </div>

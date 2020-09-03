@@ -38,7 +38,7 @@ export const fetchQuery = `
           hasNextPage
           perPage
         }
-        activities (userId: $userId, sort: ID_DESC) {
+        activities (userId: $userId, sort: ID_DESC, type: ANIME_LIST) {
           __typename
           ... on ListActivity {
             id

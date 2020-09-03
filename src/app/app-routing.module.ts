@@ -4,6 +4,7 @@ import { MainComponent } from './components/main/main.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { UserComponent } from './components/user/user.component';
 import { SeriesComponent } from './components/series/series.component';
+import { SeriesContainerComponent } from './components/series-container/series-container.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,13 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       { path: 'overview', component: StatsComponent },
-      { path: 'series', component: SeriesComponent }
+      { 
+        path: 'series', 
+        component: SeriesContainerComponent,
+        children: [
+          { path: '', component: SeriesComponent }
+        ]
+      }
     ],
   }
 ];

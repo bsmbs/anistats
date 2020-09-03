@@ -1,14 +1,14 @@
 <div class="ct" style="margin-bottom: 20px;" *ngIf="filter.type == 'INCLUSION'">
     <div class="filter-header">
         <span>{{ filter.name }}</span>
-        <i class="material-icons filter-icon" (click)="selectAll()" title="Select all">done_all</i>
+        <i class="material-icons-round filter-icon" (click)="selectAll()" title="Select all">done_all</i>
     </div>
     <div class="filter-values">
         <div class="filter-value" *ngFor="let val of filter.values">
             <label [for]="val.key" class="checkbox-ct">
                 <input [id]="val.key" type="checkbox" class="checkbox" [checked]="filter.checked.indexOf(val.key) > -1" (change)="check(val.key)">
                 <div class="checkbox-icon">
-                    <i class="material-icons checkbox-checked" *ngIf="filter.checked.indexOf(val.key) > -1" [@checkAnimation]>done</i>
+                    <i class="material-icons-round checkbox-checked" *ngIf="filter.checked.indexOf(val.key) > -1" [@checkAnimation]>done</i>
                 </div>
                 <div class="filter-name">{{ val.name }}</div>
                 <span style="flex: 1 1 0;"></span>
@@ -20,7 +20,7 @@
     <div class="filter-header">
         <span>{{ filter.name }}</span>
         <span *ngIf="filter.checked != 'any'">{{ filter.checked }}</span>
-        <i class="material-icons filter-icon" (click)="filter.checked = 'any'" title="Clear">clear</i>
+        <i class="material-icons-round filter-icon" (click)="filter.checked = 'any'" title="Clear">clear</i>
     </div>
     <div class="range-container">
         <input class="range" type="range" [(ngModel)]="filter.checked" [min]="filter.min" [max]="filter.max">
