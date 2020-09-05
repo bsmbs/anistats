@@ -1,12 +1,16 @@
 <nav>
-    <div class="tab">
-        <i class="material-icons-round tab-icon">list</i>
-        <span class="tab-text">Anime List</span>
-    </div>
-    <div class="tab">
+    <a class="tab tab-selected" [routerLink]="['.']">
+        <i class="material-icons-round tab-icon">dashboard</i>
+        <span class="tab-text">Anime list</span>
+    </a>
+    <a class="tab" [routerLink]="['random']">
         <i class="material-icons-round tab-icon">casino</i>
         <span class="tab-text">Random</span>
-    </div>
+    </a>
+    <a class="tab" [routerLink]="['missing']">
+        <i class="material-icons-round tab-icon">warning</i>
+        <span class="tab-text">Missing titles</span>
+    </a>
 </nav>
 
 <router-outlet></router-outlet>
