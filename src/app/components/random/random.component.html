@@ -1,0 +1,41 @@
+<div class="container-st">
+    <div class="grid">
+        <div class="left">
+            <div class="ct" *ngFor="let filter of filters">
+                <div class="header">
+                    <span>{{ filter.name }}</span>
+                </div>
+                <div class="ranged">
+                    <div class="ranged-child">
+                        <span class="sub">Min. <span class="score">{{ filter.currentMin }}{{ filter.unit }}{{ filter.currentMin == filter.max ? filter.maxUnit : '' }}</span></span>
+                        <input class="range" type="range" [class.incorrect]="filter.currentMin > filter.currentMax" [(ngModel)]="filter.currentMin" [min]="filter.min" [max]="filter.max">
+                    </div>
+                    <div class="ranged-child">
+                        <span class="sub">Max. <span class="score">{{ filter.currentMax }}{{ filter.unit }}{{ filter.currentMax == filter.max ? filter.maxUnit : '' }}</span></span>
+                        <input class="range" type="range" [class.incorrect]="filter.currentMin > filter.currentMax" [(ngModel)]="filter.currentMax" [min]="filter.min" [max]="filter.max">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left">
+            <app-filter [filter]="format"></app-filter>
+        </div>
+        <div class="bottom">
+            <div class="button" (click)="select()">
+                <i class="material-icons-round">shuffle</i>
+                <span>Select random</span>
+            </div>
+        </div>
+        <div class="bottom animation" *ngIf="randomizing">
+            <i class="material-icons-round">casino</i>
+        </div>
+        <div class="bottom card" *ngIf="randomed">
+            <img [src]="randomed.coverImage.medium" class="card-image">
+            <div class="card-content">
+                <a class="card-title" [href]="'https://anilist.co/anime/'+randomed.id" target="_blank">{{ randomed.title }}</a>
+                <span class="card-details">{{ randomed.format }} · {{ randomed.seasonYear }} · {{ randomed.averageScore }}%</span>
+            </div>
+        </div>
+    </div>
+
+</div>

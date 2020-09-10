@@ -22,6 +22,7 @@ import { AnimetypePipe } from './pipes/animetype.pipe';
 import { FilterComponent } from './components/list/filter/filter.component';
 import { SeriesPopupComponent } from './components/popup/series-popup/series-popup.component';
 import { SeriesContainerComponent } from './components/series-container/series-container.component';
+import { RandomComponent } from './components/random/random.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SeriesContainerComponent } from './components/series-container/series-c
     FilterComponent,
     SeriesPopupComponent,
     SeriesContainerComponent,
+    RandomComponent,
   ],
   imports: [
     BrowserModule,

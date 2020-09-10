@@ -26,6 +26,12 @@ nav {
 
     text-decoration: none;
     color: inherit;
+
+    transition: background 200ms;
+}
+
+.tab:hover {
+    background: var(--color-hover-darker);
 }
 
 .tab-selected {

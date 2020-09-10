@@ -24,6 +24,7 @@ export const listQuery =
             coverImage {
               medium
             }
+            averageScore
             bannerImage
             seasonYear
             title {

@@ -47,10 +47,130 @@ footer {
     --color-nav-deep: #1b1e25;
     --color-nav-selected: #5cc1f3;
     --color-nav-selected-white: #d0dee9;
+
+    --color-err: #d2405c;
 }
 
 .ct {
     background: var(--color-bg-darker);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
+}
+
+.container-st {
+    display: flex;
+    margin: auto;
+    max-width: 1320px;
+}
+
+@media screen and (min-width: 1200px) {
+    .container-st {
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 760px) {
+    .container-st {
+        flex-direction: column-reverse;
+        margin-bottom: 80px;
+    }
+}
+
+
+// RANGE
+$rangeHeight: 6px;
+
+.range-container {
+  padding: 0 12px 6px;
+}
+
+.range {
+  appearance: none;
+
+  background: var(--color-bg-lighter);
+  width: 100%;
+  margin: 0;
+
+  height: $rangeHeight;
+  border-radius: 3px;
+  outline: none;
+  
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    background: var(--color-bg-darker);
+    border: 2px solid var(--color-bars);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    background: var(--color-bg-darker);
+    border: 2px solid var(--color-bars);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &::-moz-range-progress {
+    background: var(--color-bars);
+    height: $rangeHeight;
+    border-radius: 3px;
+  }
+}
+
+// CHECKBOX
+.checkbox-ct input[type=checkbox] {
+  display: none;
+}
+
+.checkbox-ct {
+  display: flex;
+  padding: 8px;
+  flex-grow: 1;
+  user-select: none;
+
+  cursor: pointer;
+  transition: 200ms;
+
+  &:hover {
+    background: var(--color-hover-darker);
+  }
+}
+
+.checkbox-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  background: var(--color-bg-light);
+
+  margin-right: 10px;
+}
+
+.checkbox-checked {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 1em;
+
+  background: var(--color-bars);
 }

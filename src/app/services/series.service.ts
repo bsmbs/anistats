@@ -15,6 +15,7 @@ export interface Media {
   format: string,
   seasonYear? : number,
   type?: string,
+  averageScore?: number,
   status?: string,
   progress?: number,
   added?: ActivityDate,

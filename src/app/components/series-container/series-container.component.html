@@ -1,16 +1,16 @@
 <nav>
-    <a class="tab tab-selected" [routerLink]="['.']">
+    <a class="tab" [routerLink]="['.']" routerLinkActive="tab-selected" [routerLinkActiveOptions]="{exact: true}">
         <i class="material-icons-round tab-icon">dashboard</i>
         <span class="tab-text">Anime list</span>
     </a>
-    <a class="tab" [routerLink]="['random']">
+    <a class="tab" [routerLink]="['random']" routerLinkActive="tab-selected">
         <i class="material-icons-round tab-icon">casino</i>
         <span class="tab-text">Random</span>
     </a>
-    <a class="tab" [routerLink]="['missing']">
+    <!--<a class="tab" [routerLink]="['missing']" routerLinkActive="tab-selected">
         <i class="material-icons-round tab-icon">warning</i>
         <span class="tab-text">Missing titles</span>
-    </a>
+    </a>-->
 </nav>
 
 <router-outlet></router-outlet>

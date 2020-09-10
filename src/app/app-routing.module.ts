@@ -5,6 +5,7 @@ import { StatsComponent } from './components/stats/stats.component';
 import { UserComponent } from './components/user/user.component';
 import { SeriesComponent } from './components/series/series.component';
 import { SeriesContainerComponent } from './components/series-container/series-container.component';
+import { RandomComponent } from './components/random/random.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
         path: 'series', 
         component: SeriesContainerComponent,
         children: [
-          { path: '', component: SeriesComponent }
+          { path: '', component: SeriesComponent },
+          { path: 'random', component: RandomComponent }
         ]
       }
     ],

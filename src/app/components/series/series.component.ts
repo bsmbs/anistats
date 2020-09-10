@@ -123,8 +123,8 @@ export class SeriesComponent implements OnInit {
   async ngOnInit() {
     this.seriesService.ensureList()
     .then(list => {
+      console.dir(list[0]);
       this.list = Object.create(list);
-      console.dir(this.list[0])
     })
   }
 
