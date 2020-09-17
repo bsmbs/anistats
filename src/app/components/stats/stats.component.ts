@@ -9,6 +9,7 @@ import { UserService } from '../../services/user.service';
 import { MonthPipe } from '../../pipes/month.pipe';
 import { PopupComponent } from '../popup/popup.component';
 import { LocaleService } from 'src/app/services/locale.service';
+import { DayData } from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-stats',
@@ -24,6 +25,7 @@ export class StatsComponent implements OnInit {
   updating: Subject<number> = new Subject();
 
   loading: boolean = true;
+  pickMode: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private user: UserService, public statsService: StatsService, private monthPipe: MonthPipe, public locale: LocaleService) {
     if (!this.statsService.prefetchedActivities) { // first time
@@ -56,12 +58,9 @@ export class StatsComponent implements OnInit {
     }));
   }
 
-  handleCalendar(event: FormattedActivity | number) {
+  handleCalendar(event: FormattedActivity | number | DayData ) {
     if(typeof event == 'number') {
       switch(event) {
-        case 0: // load more
-          this.loadEarlier();
-          break;
         case 1: // month --
           this.calendarBack();
           break;
@@ -69,8 +68,41 @@ export class StatsComponent implements OnInit {
           this.calendarForward();
           break;
       }
+    } else if ((<DayData>event).year) { 
+      if(this.pickMode) { // Load specific day and show popup
+        let d = (<DayData>event);
+        let date = new Date(d.year, d.month, d.day);
+
+        // Get timestamp of the beginning and the end of this day
+        // Add 3 hours because of late evenings counting as previous day.
+        const begin = date.getTime()+10800000;
+        const end = begin+86400000; // add 24 hours to the beginning
+
+        // Fetch user activities from this day from Anilist
+        this.statsService.fetchSpecificDayActivity(begin/1000, end/1000)
+        .then(resp => {
+          // Parse
+          const parsed = this.statsService.parseActivities(resp.data.data.Page.activities);
+
+          const formatted = this.formatActivities(parsed);
+
+
+          /*if(formatted.length > 1) {
+            let nf = formatted[0];
+            nf.eps += formatted[1].eps;
+            nf.anime = nf.anime.concat(formatted[1].anime);
+
+            this.popup.openDay(nf);
+          } else {*/
+            this.popup.openDay(formatted[0]);
+          //}
+        });
+      } else { // Load earlier
+        this.loadEarlier();
+      }
     } else {
-      this.popup.openDay(event);
+      // Open dayPopup
+      this.popup.openDay(<FormattedActivity>event);
     }
   }
 
@@ -126,6 +158,10 @@ export class StatsComponent implements OnInit {
 
   calendarForward(): void {
     this.updating.next(2); // Signal: MONTH++
+  }
+
+  togglePickMode(): void {
+    this.pickMode = !this.pickMode;
   }
 
   ngOnInit(): void {

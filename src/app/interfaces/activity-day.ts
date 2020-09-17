@@ -29,7 +29,7 @@ export interface FormattedActivity extends ActivityDay {
 }
 
 export const fetchQuery = `
-    query ($userId: Int, $page: Int, $perPage: Int) {
+    query ($userId: Int, $page: Int, $perPage: Int, $from: Int, $to: Int) {
       Page (page: $page, perPage: $perPage) {
         pageInfo {
           total
@@ -38,7 +38,7 @@ export const fetchQuery = `
           hasNextPage
           perPage
         }
-        activities (userId: $userId, sort: ID_DESC, type: ANIME_LIST) {
+        activities (userId: $userId, sort: ID_DESC, type: ANIME_LIST, createdAt_greater: $from, createdAt_lesser: $to) {
           __typename
           ... on ListActivity {
             id

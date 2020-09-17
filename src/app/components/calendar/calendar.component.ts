@@ -4,6 +4,12 @@ import { Subject } from 'rxjs';
 import { StatsService } from '../../services/stats.service';
 import { FormattedActivity } from '../../interfaces/activity-day';
 
+export interface DayData {
+  day: number,
+  month: number,
+  year: number
+}
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -12,7 +18,7 @@ import { FormattedActivity } from '../../interfaces/activity-day';
 export class CalendarComponent implements OnInit, OnChanges {
   @Input() data: FormattedActivity[];
   @Input() update?: Subject<number>;
-  @Output() events = new EventEmitter<FormattedActivity|number>()
+  @Output() events = new EventEmitter<FormattedActivity|number|DayData>()
   
   initialX: number;
 
@@ -109,7 +115,13 @@ export class CalendarComponent implements OnInit, OnChanges {
     if(day.dayObj) {
       this.events.emit(day.dayObj);
     } else if (!day.is) {
-      this.events.emit(0);
+      console.dir(day);
+      //this.events.emit(0);
+      this.events.emit({
+        day: day.day,
+        month: this.currentMonth,
+        year: this.currentYear
+      })
     }
   }
 

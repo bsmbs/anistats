@@ -244,3 +244,11 @@
   grid-column: 1;
   grid-row: 2;
 }
+
+.toggled {
+  background: var(--color-bars);
+
+  &:hover {
+    background: var(--color-hover-bars) !important;
+  }
+}

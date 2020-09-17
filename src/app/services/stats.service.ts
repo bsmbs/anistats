@@ -115,6 +115,31 @@ export class StatsService {
     return apiResp;
   }
 
+  async fetchSpecificDayActivity(from: number, to: number) {
+    const vars = {
+      page: 1,
+      perPage: 50,
+      userId: this.userId,
+      from,
+      to
+    };
+    const apiResp = await axios.post(
+      'https://graphql.anilist.co',
+      {
+        query: fetchQuery,
+        variables: vars
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        }
+      }
+    );
+
+    return apiResp;
+  }
+
   async loadEarlier() {
       this.activities = this.activities.concat(this.prefetchedActivities);
 
