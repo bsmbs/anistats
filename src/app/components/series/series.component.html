@@ -5,6 +5,7 @@
             <span (click)="sort('title')" style="justify-content: flex-start;">Title <i *ngIf="sortSettings.prop == 'title'" class="material-icons-round">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
             <span (click)="sort('format')">Type <i *ngIf="sortSettings.prop == 'format'" class="material-icons-round">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
             <span (click)="sort('added')">Added <i *ngIf="sortSettings.prop == 'added'" class="material-icons-round">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
+            <span (click)="sort('completed')">Completed <i *ngIf="sortSettings.prop == 'completed'" class="material-icons-round">keyboard_arrow_{{ sortSettings.descending ? 'up' : 'down' }}</i></span>
             <span></span>
         </div>
         <div *ngIf="list">

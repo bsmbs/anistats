@@ -2,13 +2,7 @@ import { Component, EventEmitter, OnInit, Input, OnChanges, Output } from '@angu
 import { Subject } from 'rxjs';
 
 import { StatsService } from '../../services/stats.service';
-import { FormattedActivity } from '../../interfaces/activity-day';
-
-export interface DayData {
-  day: number,
-  month: number,
-  year: number
-}
+import { FormattedActivity, FuzzyDate } from '../../interfaces/activity-day';
 
 @Component({
   selector: 'app-calendar',
@@ -18,7 +12,7 @@ export interface DayData {
 export class CalendarComponent implements OnInit, OnChanges {
   @Input() data: FormattedActivity[];
   @Input() update?: Subject<number>;
-  @Output() events = new EventEmitter<FormattedActivity|number|DayData>()
+  @Output() events = new EventEmitter<FormattedActivity|number|FuzzyDate>()
   
   initialX: number;
 

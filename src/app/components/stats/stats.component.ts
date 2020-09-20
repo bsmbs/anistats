@@ -2,14 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
-import { activityDateFromDate, ActivityDay, FormattedActivity } from '../../interfaces/activity-day';
+import { activityDateFromDate, ActivityDay, FormattedActivity, FuzzyDate } from '../../interfaces/activity-day';
 import { StatsService } from '../../services/stats.service';
 import { UserService } from '../../services/user.service';
 
 import { MonthPipe } from '../../pipes/month.pipe';
 import { PopupComponent } from '../popup/popup.component';
 import { LocaleService } from 'src/app/services/locale.service';
-import { DayData } from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-stats',
@@ -58,7 +57,7 @@ export class StatsComponent implements OnInit {
     }));
   }
 
-  handleCalendar(event: FormattedActivity | number | DayData ) {
+  handleCalendar(event: FormattedActivity | number | FuzzyDate ) {
     if(typeof event == 'number') {
       switch(event) {
         case 1: // month --
@@ -68,9 +67,9 @@ export class StatsComponent implements OnInit {
           this.calendarForward();
           break;
       }
-    } else if ((<DayData>event).year) { 
+    } else if ((<FuzzyDate>event).year) { 
       if(this.pickMode) { // Load specific day and show popup
-        let d = (<DayData>event);
+        let d = (<FuzzyDate>event);
         let date = new Date(d.year, d.month, d.day);
 
         // Get timestamp of the beginning and the end of this day

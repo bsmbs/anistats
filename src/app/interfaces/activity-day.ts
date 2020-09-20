@@ -28,6 +28,12 @@ export interface FormattedActivity extends ActivityDay {
   bottomImage?: string
 }
 
+export interface FuzzyDate {
+  year: number,
+  month: number,
+  day: number
+}
+
 export const fetchQuery = `
     query ($userId: Int, $page: Int, $perPage: Int, $from: Int, $to: Int) {
       Page (page: $page, perPage: $perPage) {
@@ -79,6 +85,26 @@ export function activityDateFromDate(timestamp: Date): ActivityDate {
         weekday, // Wednesday
         time: timestamp.getTime()
       };
+}
+
+export function activityDateFromFuzzyDate(fuzzyDate: FuzzyDate): ActivityDate {
+  const date = new Date(fuzzyDate.year, fuzzyDate.month, fuzzyDate.day);
+
+  if(fuzzyDate.day == null) return {
+    date: 0,
+    month: 0,
+    year: 0,
+    weekday: '0',
+    time: 0
+  }
+
+  return {
+    date: fuzzyDate.day,
+    month: fuzzyDate.month + 1,
+    year: fuzzyDate.year,
+    weekday: daysStrings[date.getDay()],
+    time: date.getTime()
+  }
 }
 
 export function dateFromActivityDate(activityDate: ActivityDate): Date {

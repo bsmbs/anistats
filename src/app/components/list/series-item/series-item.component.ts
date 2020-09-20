@@ -10,12 +10,16 @@ import { LocaleService } from 'src/app/services/locale.service';
 export class SeriesItemComponent implements OnInit {
   @Input() data: Media;
   formattedDate: string;
+  completedDate: string;
 
   constructor(public locale: LocaleService) { }
 
   ngOnInit(): void {
     if(this.data.added.time == 0) this.formattedDate = 'Unknown';
     else this.formattedDate = this.locale.formatActivityDate(this.data.added);
+
+    if(this.data.completed.time == 0) this.completedDate = 'Unknown';
+    else this.completedDate = this.locale.formatActivityDate(this.data.completed);
   }
 
   resolveColor(status: string) {

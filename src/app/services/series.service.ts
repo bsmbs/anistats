@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { UserService } from './user.service';
 import { listQuery, mediaQuery } from '../interfaces/queries';
-import { activityDateFromDate, ActivityDate } from '../interfaces/activity-day';
+import { activityDateFromDate, ActivityDate, activityDateFromFuzzyDate } from '../interfaces/activity-day';
 
 export interface Media {
   id: number,
@@ -19,6 +19,7 @@ export interface Media {
   status?: string,
   progress?: number,
   added?: ActivityDate,
+  completed?: ActivityDate
   episodes?: number
   eps?: number
 }
@@ -45,7 +46,7 @@ export class SeriesService {
                     status: x.status,
                     progress: x.progress,
                     started: x.startedAt,
-                    completed: x.completedAt,
+                    completed: activityDateFromFuzzyDate(x.completedAt),
                     added: activityDateFromDate(new Date(x.createdAt*1000)),
                   })) 
                   .sort((a, b) => a.title.localeCompare(b.title)); // Sort alphabetically

@@ -3,5 +3,6 @@
     <a class="series-title">{{ data.title }}</a>
     <span class="series-col">{{ data.format | animetype }}</span>
     <span class="series-col">{{ formattedDate }}</span>
+    <span class="series-col">{{ completedDate }}</span>
     <i class="material-icons-round series-icon" [style.color]="resolveColor(data.status)">{{ resolveIcon(data.status) }}</i>
 </div>
