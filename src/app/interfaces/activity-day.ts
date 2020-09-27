@@ -100,7 +100,7 @@ export function activityDateFromFuzzyDate(fuzzyDate: FuzzyDate): ActivityDate {
 
   return {
     date: fuzzyDate.day,
-    month: fuzzyDate.month + 1,
+    month: fuzzyDate.month,
     year: fuzzyDate.year,
     weekday: daysStrings[date.getDay()],
     time: date.getTime()
