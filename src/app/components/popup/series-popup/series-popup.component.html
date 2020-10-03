@@ -12,15 +12,15 @@
     <div class="popup-content" *ngIf="current; else other" [@w]>
         <div class="popup-props">
             <div class="prop">
-                <div class="prop-val">{{ data.episodes }}</div>
+                <div class="prop-val">{{ data.episodes | nodata }}</div>
                 <div class="prop-key">Episodes</div>
             </div>
             <div class="prop">
-                <div class="prop-val">{{ avg }}</div>
+                <div class="prop-val">{{ avg | nodata }}</div>
                 <div class="prop-key">Daily average</div>
             </div>
             <div class="prop">
-                <div class="prop-val">{{ diff }}</div>
+                <div class="prop-val">{{ diff | nodata }}</div>
                 <div class="prop-key">Days</div>
             </div>
             <div class="prop">

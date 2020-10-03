@@ -23,6 +23,7 @@ import { FilterComponent } from './components/list/filter/filter.component';
 import { SeriesPopupComponent } from './components/popup/series-popup/series-popup.component';
 import { SeriesContainerComponent } from './components/series-container/series-container.component';
 import { RandomComponent } from './components/random/random.component';
+import { NodataPipe } from './pipes/nodata.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RandomComponent } from './components/random/random.component';
     SeriesPopupComponent,
     SeriesContainerComponent,
     RandomComponent,
+    NodataPipe,
   ],
   imports: [
     BrowserModule,

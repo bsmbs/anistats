@@ -5,12 +5,13 @@ import { ActivityDay } from 'src/app/interfaces/activity-day';
 import { MonthPipe } from 'src/app/pipes/month.pipe';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { LocaleService } from 'src/app/services/locale.service';
+import { NodataPipe } from 'src/app/pipes/nodata.pipe';
 
 @Component({
   selector: 'app-series-popup',
   templateUrl: './series-popup.component.html',
   styleUrls: ['./series-popup.component.scss'],
-  providers: [MonthPipe],
+  providers: [MonthPipe, NodataPipe],
   animations: [
     trigger(
       'w', [
