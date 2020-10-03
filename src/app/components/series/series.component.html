@@ -17,8 +17,9 @@
             <div class="ct search-ct">
                 <input type="search" class="search" placeholder="Search" [(ngModel)]="val">
             </div>
-            <div class="ct more-ct" (click)="switchFilters()" title="Show/hide filters">
-                <i class="material-icons-round">more_horiz</i>
+            <div class="ct more-ct" (click)="switchFilters()" title="Show/hide filters" *ngIf="mobileView">
+                <i class="material-icons-round">filter_alt</i>
+                <span>Filter</span>
             </div>
         </div>
         

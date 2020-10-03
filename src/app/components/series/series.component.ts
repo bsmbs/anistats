@@ -22,6 +22,7 @@ export class SeriesComponent implements OnInit {
   val: string = '';
 
   showFilters: boolean = true;
+  mobileView: boolean;
 
   sortSettings: {
     prop: string;
@@ -121,6 +122,14 @@ export class SeriesComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
 
   async ngOnInit() {
+    this.breakpointObserver
+    .observe(['(max-width: 760px)'])
+    .subscribe((state: BreakpointState) => {
+      this.showFilters = !state.matches;
+      this.mobileView = state.matches;
+    });
+
+
     this.seriesService.ensureList()
     .then(list => {
       console.dir(list[0]);

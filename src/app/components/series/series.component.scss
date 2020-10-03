@@ -4,7 +4,6 @@
 
 .filters {
     margin: 10px;
-    flex: 0 0 200px;
 }
 
 .first {
@@ -54,18 +53,22 @@
 .more-ct {
     margin-left: 10px;
 
-    width: 32px;
+    padding: 0 13px 0 10px;
     height: auto;
 
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    transition: 100ms;
+    transition: 200ms;
     cursor: pointer;
 
     &:hover {
         background: var(--color-bg-lighter)
+    }
+
+    i {
+        margin-right: 3px;
     }
 }
 
