@@ -3,7 +3,6 @@ nav {
     align-items: center;
     justify-content: center;
 
-    width: 80%;
     max-width: 1320px;
     margin: auto;
 }
@@ -42,4 +41,10 @@ nav {
     line-height: initial;
     font-size: 20px;
     padding-right: 5px;
+}
+
+@media screen and (min-width: 760px) {
+    nav {
+        width: 80%;
+    }
 }
