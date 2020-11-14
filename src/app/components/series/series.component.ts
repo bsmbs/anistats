@@ -119,7 +119,7 @@ export class SeriesComponent implements OnInit {
     }
   ]
 
-  constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private seriesService: SeriesService, private statsSerivce: StatsService, private monthPipe: MonthPipe) { }
+  constructor(private breakpointObserver: BreakpointObserver, private seriesService: SeriesService) { }
 
   async ngOnInit() {
     this.breakpointObserver

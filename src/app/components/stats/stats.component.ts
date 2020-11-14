@@ -26,7 +26,7 @@ export class StatsComponent implements OnInit {
   loading: boolean = true;
   pickMode: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private user: UserService, public statsService: StatsService, private monthPipe: MonthPipe, public locale: LocaleService) {
+  constructor(private route: ActivatedRoute, private router: Router, public statsService: StatsService, public locale: LocaleService) {
     if (!this.statsService.prefetchedActivities) { // first time
       this.statsService.fetchActivity(1)
         .then(async resp => {
