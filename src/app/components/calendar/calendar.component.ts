@@ -109,8 +109,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     if(day.dayObj) {
       this.events.emit(day.dayObj);
     } else if (!day.is) {
-      console.dir(day);
-      //this.events.emit(0);
       this.events.emit({
         day: day.day,
         month: this.currentMonth,

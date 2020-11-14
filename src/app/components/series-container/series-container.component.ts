@@ -12,12 +12,6 @@ export class SeriesContainerComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    /*this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.name = this.route.snapshot
-        console.log(this.name);
-      }
-    });*/
   }
 
   

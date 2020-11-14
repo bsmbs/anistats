@@ -132,7 +132,6 @@ export class SeriesComponent implements OnInit {
 
     this.seriesService.ensureList()
     .then(list => {
-      console.dir(list[0]);
       this.list = Object.create(list);
     })
   }
